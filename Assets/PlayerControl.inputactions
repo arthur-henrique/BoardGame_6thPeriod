@@ -1,0 +1,85 @@
+{
+    "name": "PlayerControl",
+    "maps": [
+        {
+            "name": "PlayerControllers",
+            "id": "95154a0c-2bf6-473e-974c-f09bcf2c7531",
+            "actions": [
+                {
+                    "name": "Forward",
+                    "type": "Button",
+                    "id": "dc111daf-675d-4165-8aae-0cf576409e2f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sideward",
+                    "type": "Button",
+                    "id": "979115d2-d57a-4ccd-9a87-e498b339bdca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "35078537-3df2-4ae4-9b1f-561f406f413a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0a4cfcd6-a839-4721-b877-555c989a0519",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29af148a-eb3b-4cc1-9d47-b311e3c61c8d",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sideward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48c088e5-52ed-4456-978e-514da575e029",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sideward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3fae1d5-81b4-499a-ac9e-c01ee7c5cdc3",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
