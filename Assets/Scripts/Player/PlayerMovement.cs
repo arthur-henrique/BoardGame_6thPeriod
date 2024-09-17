@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 isMoving = false;
+                isOnTurn = true;
             }
             
         }
@@ -85,7 +86,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if(roll.ReadValue<float>() != 0)
             {
-                indexToGo = Random.Range(2, 10);
+                indexToGo = Random.Range(1, 7) + Random.Range(1, 7);
+                print(indexToGo);
                 isOnTurn = false;
                 isMoving = true;
             }
