@@ -10,11 +10,15 @@ public class PlayerMovement : MonoBehaviour
 
     public int currentIndex = 0;
     public int indexToGo = 0;
+    public int gateIndex = 0;
     public int speedMod = 1;
 
     public bool isOnTurn = false;
     public bool isMoving = false;
     public bool isOnEvent = false;
+    public bool canRoll = true;
+
+    public int playerIndex;
 
     private void Awake()
     {
@@ -30,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
         forward.Enable();
         side.Enable();
         roll.Enable();
+        isOnTurn = true;
+        canRoll = true;
+
     }
 
     private void OnDisable()
@@ -42,56 +49,66 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isOnEvent && isMoving)
+        if (isOnTurn)
         {
-            if(indexToGo != 0)
+            if (!isOnEvent && isMoving)
             {
-                transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position, Time.deltaTime * speedMod);
-
-                if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position) <= 0.1)
+                if (indexToGo != 0)
                 {
-                    currentIndex++;
-                    indexToGo -= 1;
-                    if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count)
+                    float variance_x = Random.Range(1.0f, 1.5f);
+                    float variance_z = Random.Range(1.0f, 1.5f);
+
+                    Vector3 variance = new Vector3(variance_x, 0f, variance_z);
+                    transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position + variance, Time.deltaTime * speedMod);
+
+                    if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position + variance) <= 0.1)
                     {
-                        currentIndex = 0;
+                        currentIndex++;
+                        indexToGo -= 1;
+                        if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count)
+                        {
+                            currentIndex = 0;
+                        }
                     }
+
                 }
-                
-            }
-            else
-            {
-                isMoving = false;
-                isOnTurn = true;
-            }
-            
-        }
+                else
+                {
+                    isMoving = false;
+                    TrackLoopManager.instance.TurnTransition();
+                }
 
-        if(isOnEvent)
-        {
-            if(forward.ReadValue<float>() != 0)
-            {
-                print("Go Forward");
-                isOnEvent = false;
             }
-            else if(side.ReadValue<float>() != 0)
-            {
-                print("Go Sideward");
-                currentIndex += 29;
-                isOnEvent = false;
-            }
-        }
 
-        if(isOnTurn)
-        {
-            if(roll.ReadValue<float>() != 0)
+            if (isOnEvent)
             {
-                indexToGo = Random.Range(1, 7) + Random.Range(1, 7);
-                print(indexToGo);
-                isOnTurn = false;
-                isMoving = true;
+                if (forward.ReadValue<float>() != 0)
+                {
+                    print("Go Forward");
+                    isOnEvent = false;
+                }
+                else if (side.ReadValue<float>() != 0)
+                {
+                    print("Go Sideward");
+                    currentIndex += gateIndex;
+                    isOnEvent = false;
+                }
             }
+
+            if (canRoll)
+            {
+                if (roll.ReadValue<float>() != 0)
+                {
+                    canRoll = false;
+                    indexToGo = Random.Range(1, 7) + Random.Range(1, 7);
+                    print(indexToGo);
+                    isMoving = true;
+                }
+            }
+
         }
-        
     }
+        
+
+        
 }

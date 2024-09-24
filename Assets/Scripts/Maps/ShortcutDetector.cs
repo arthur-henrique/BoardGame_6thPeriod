@@ -13,6 +13,7 @@ public class ShortcutDetector : MonoBehaviour
             if(isGate)
             {
                 other.gameObject.GetComponent<PlayerMovement>().isOnEvent = true;
+                other.gameObject.GetComponent<PlayerMovement>().gateIndex = indexFactor;
             }
             else
             {

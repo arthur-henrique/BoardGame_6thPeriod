@@ -8,6 +8,8 @@ public class TrackLoopManager : MonoBehaviour
 
     public GameObject mainTrackParent;
     public List<Transform> mainTrackTransforms;
+    public List<GameObject> playersList;
+    public int currentPlayerIndexTurn;
 
     private void Awake()
     {
@@ -26,11 +28,31 @@ public class TrackLoopManager : MonoBehaviour
         {
             mainTrackTransforms.Add(mainTrackParent.transform.GetChild(i).transform);
         }
+
+        for (int i = 0; i < playersList.Count; i++)
+        {
+            if (i != currentPlayerIndexTurn)
+                playersList[i].gameObject.GetComponent<PlayerMovement>().enabled = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TurnTransition()
     {
-        
+        if (currentPlayerIndexTurn >= playersList.Count -1 )
+        {
+            currentPlayerIndexTurn = 0;
+        }
+        else
+        {
+            currentPlayerIndexTurn++;
+        }
+
+        for (int i = 0; i < playersList.Count; i++)
+        {
+            if (i != currentPlayerIndexTurn)
+                playersList[i].gameObject.GetComponent<PlayerMovement>().enabled = false;
+        }
+
+        playersList[currentPlayerIndexTurn].gameObject.GetComponent<PlayerMovement>().enabled = true;
     }
 }
