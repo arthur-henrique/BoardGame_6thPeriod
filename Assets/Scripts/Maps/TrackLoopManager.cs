@@ -9,6 +9,8 @@ public class TrackLoopManager : MonoBehaviour
     public GameObject mainTrackParent;
     public List<Transform> mainTrackTransforms;
     public List<GameObject> playersList;
+    public List<Cinemachine.CinemachineVirtualCamera> virtualCameras;
+
     public int currentPlayerIndexTurn;
 
     private void Awake()
@@ -50,9 +52,13 @@ public class TrackLoopManager : MonoBehaviour
         for (int i = 0; i < playersList.Count; i++)
         {
             if (i != currentPlayerIndexTurn)
+            {
                 playersList[i].gameObject.GetComponent<PlayerMovement>().enabled = false;
+                virtualCameras[i].Priority = 0;
+            }
         }
 
         playersList[currentPlayerIndexTurn].gameObject.GetComponent<PlayerMovement>().enabled = true;
+        virtualCameras[currentPlayerIndexTurn].Priority = 1;
     }
 }
