@@ -101,6 +101,138 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Controls_Fruit_Drop"",
+            ""id"": ""2b850db2-aa4d-468f-8d5c-e54852dca253"",
+            ""actions"": [
+                {
+                    ""name"": ""Walk P1"",
+                    ""type"": ""Button"",
+                    ""id"": ""221d9bd7-f2ba-4794-82b7-c983c2fa4cda"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump P1"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a072253-ba53-4062-8a67-783821056fe8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Walk P2"",
+                    ""type"": ""Button"",
+                    ""id"": ""a215bc16-728a-4da5-a4fd-6c8a8d4194a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump P2"",
+                    ""type"": ""Button"",
+                    ""id"": ""7d425fbc-dd45-4e57-9b64-6f02a4708a95"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Walk P1"",
+                    ""id"": ""1332b39d-df30-4522-97b4-0a7f3c579d5b"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk P1"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""161903e5-12ad-4765-be7f-80d57a8331ef"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk P1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""ee988748-5801-4570-87ff-9063bf8a0afe"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk P1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6cb463ac-2323-4a1c-afa4-7d5377e16c1e"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump P1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Walk P2"",
+                    ""id"": ""49837c70-557e-4c7d-be66-97d3a1e9f912"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk P2"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""9458a791-72cd-4483-b2ba-d492376f0c48"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk P2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""25928633-f58a-4649-b363-faad8a8d1cf9"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Walk P2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d3f8a4a-cca6-4579-9c25-7eec0c0edffa"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump P2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -110,6 +242,12 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_PlayerControllers_Forward = m_PlayerControllers.FindAction("Forward", throwIfNotFound: true);
         m_PlayerControllers_Sideward = m_PlayerControllers.FindAction("Sideward", throwIfNotFound: true);
         m_PlayerControllers_Roll = m_PlayerControllers.FindAction("Roll", throwIfNotFound: true);
+        // Controls_Fruit_Drop
+        m_Controls_Fruit_Drop = asset.FindActionMap("Controls_Fruit_Drop", throwIfNotFound: true);
+        m_Controls_Fruit_Drop_WalkP1 = m_Controls_Fruit_Drop.FindAction("Walk P1", throwIfNotFound: true);
+        m_Controls_Fruit_Drop_JumpP1 = m_Controls_Fruit_Drop.FindAction("Jump P1", throwIfNotFound: true);
+        m_Controls_Fruit_Drop_WalkP2 = m_Controls_Fruit_Drop.FindAction("Walk P2", throwIfNotFound: true);
+        m_Controls_Fruit_Drop_JumpP2 = m_Controls_Fruit_Drop.FindAction("Jump P2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,10 +367,87 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         }
     }
     public PlayerControllersActions @PlayerControllers => new PlayerControllersActions(this);
+
+    // Controls_Fruit_Drop
+    private readonly InputActionMap m_Controls_Fruit_Drop;
+    private List<IControls_Fruit_DropActions> m_Controls_Fruit_DropActionsCallbackInterfaces = new List<IControls_Fruit_DropActions>();
+    private readonly InputAction m_Controls_Fruit_Drop_WalkP1;
+    private readonly InputAction m_Controls_Fruit_Drop_JumpP1;
+    private readonly InputAction m_Controls_Fruit_Drop_WalkP2;
+    private readonly InputAction m_Controls_Fruit_Drop_JumpP2;
+    public struct Controls_Fruit_DropActions
+    {
+        private @PlayerControl m_Wrapper;
+        public Controls_Fruit_DropActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        public InputAction @WalkP1 => m_Wrapper.m_Controls_Fruit_Drop_WalkP1;
+        public InputAction @JumpP1 => m_Wrapper.m_Controls_Fruit_Drop_JumpP1;
+        public InputAction @WalkP2 => m_Wrapper.m_Controls_Fruit_Drop_WalkP2;
+        public InputAction @JumpP2 => m_Wrapper.m_Controls_Fruit_Drop_JumpP2;
+        public InputActionMap Get() { return m_Wrapper.m_Controls_Fruit_Drop; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Controls_Fruit_DropActions set) { return set.Get(); }
+        public void AddCallbacks(IControls_Fruit_DropActions instance)
+        {
+            if (instance == null || m_Wrapper.m_Controls_Fruit_DropActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Controls_Fruit_DropActionsCallbackInterfaces.Add(instance);
+            @WalkP1.started += instance.OnWalkP1;
+            @WalkP1.performed += instance.OnWalkP1;
+            @WalkP1.canceled += instance.OnWalkP1;
+            @JumpP1.started += instance.OnJumpP1;
+            @JumpP1.performed += instance.OnJumpP1;
+            @JumpP1.canceled += instance.OnJumpP1;
+            @WalkP2.started += instance.OnWalkP2;
+            @WalkP2.performed += instance.OnWalkP2;
+            @WalkP2.canceled += instance.OnWalkP2;
+            @JumpP2.started += instance.OnJumpP2;
+            @JumpP2.performed += instance.OnJumpP2;
+            @JumpP2.canceled += instance.OnJumpP2;
+        }
+
+        private void UnregisterCallbacks(IControls_Fruit_DropActions instance)
+        {
+            @WalkP1.started -= instance.OnWalkP1;
+            @WalkP1.performed -= instance.OnWalkP1;
+            @WalkP1.canceled -= instance.OnWalkP1;
+            @JumpP1.started -= instance.OnJumpP1;
+            @JumpP1.performed -= instance.OnJumpP1;
+            @JumpP1.canceled -= instance.OnJumpP1;
+            @WalkP2.started -= instance.OnWalkP2;
+            @WalkP2.performed -= instance.OnWalkP2;
+            @WalkP2.canceled -= instance.OnWalkP2;
+            @JumpP2.started -= instance.OnJumpP2;
+            @JumpP2.performed -= instance.OnJumpP2;
+            @JumpP2.canceled -= instance.OnJumpP2;
+        }
+
+        public void RemoveCallbacks(IControls_Fruit_DropActions instance)
+        {
+            if (m_Wrapper.m_Controls_Fruit_DropActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IControls_Fruit_DropActions instance)
+        {
+            foreach (var item in m_Wrapper.m_Controls_Fruit_DropActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_Controls_Fruit_DropActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public Controls_Fruit_DropActions @Controls_Fruit_Drop => new Controls_Fruit_DropActions(this);
     public interface IPlayerControllersActions
     {
         void OnForward(InputAction.CallbackContext context);
         void OnSideward(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
+    }
+    public interface IControls_Fruit_DropActions
+    {
+        void OnWalkP1(InputAction.CallbackContext context);
+        void OnJumpP1(InputAction.CallbackContext context);
+        void OnWalkP2(InputAction.CallbackContext context);
+        void OnJumpP2(InputAction.CallbackContext context);
     }
 }
