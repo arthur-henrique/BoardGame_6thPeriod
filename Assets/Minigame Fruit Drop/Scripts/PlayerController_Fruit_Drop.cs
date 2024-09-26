@@ -22,14 +22,14 @@ public class PlayerController_Fruit_Drop : MonoBehaviour
         {
             movement = inputsGame.Controls_Fruit_Drop.WalkP1;
             jump = inputsGame.Controls_Fruit_Drop.JumpP1;
-            UI = GameObject.Find("Score P1").GetComponent<TextMeshProUGUI>();
+            UI = GameObject.Find("ScoreNumber1").GetComponent<TextMeshProUGUI>();
             playerNumber = 1;
         }
         else if (gameObject.tag == "Player 2")
         {
             movement = inputsGame.Controls_Fruit_Drop.WalkP2;
             jump = inputsGame.Controls_Fruit_Drop.JumpP2;
-            UI = GameObject.Find("Score P2").GetComponent<TextMeshProUGUI>();
+            UI = GameObject.Find("ScoreNumber2").GetComponent<TextMeshProUGUI>();
             playerNumber = 2;
         }
     }
