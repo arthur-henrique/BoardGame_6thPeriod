@@ -211,6 +211,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Controls_Off_the_Hook",
+            "id": "f3cd910b-b0fa-4b9c-abaa-3e9815577611",
+            "actions": [
+                {
+                    "name": "FishP1",
+                    "type": "Button",
+                    "id": "46e3d5b9-add7-47ce-bb1c-5d5ba6df0b28",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fish P2",
+                    "type": "Button",
+                    "id": "6301d457-d341-44f6-8d03-f0069dfb138a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9ea59e9d-3838-4a38-aa9c-33682c0c3c98",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FishP1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f1a8433-d47b-463b-99b1-89312b363333",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fish P2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

@@ -17,15 +17,15 @@ public class PlayerController_Fruit_Drop : MonoBehaviour
 
     private void Awake()
     {
-        PlayerControl inputsGame = new PlayerControl();
-        if (gameObject.tag == "Player 1")
+        PlayerControl inputsGame = new();
+        if (gameObject.CompareTag("Player 1"))
         {
             movement = inputsGame.Controls_Fruit_Drop.WalkP1;
             jump = inputsGame.Controls_Fruit_Drop.JumpP1;
             UI = GameObject.Find("ScoreNumber1").GetComponent<TextMeshProUGUI>();
             playerNumber = 1;
         }
-        else if (gameObject.tag == "Player 2")
+        else if (gameObject.CompareTag("Player 2"))
         {
             movement = inputsGame.Controls_Fruit_Drop.WalkP2;
             jump = inputsGame.Controls_Fruit_Drop.JumpP2;
@@ -52,19 +52,19 @@ public class PlayerController_Fruit_Drop : MonoBehaviour
         transform.Translate(0, 0, movement.ReadValue<float>() * 5 * Time.deltaTime);
         if (jump.WasPressedThisFrame() && rb.velocity.y==0.0f)
         {
-            rb.AddForce(Vector3.up*100*jumpStrength,ForceMode.Impulse);
+            rb.AddForce(100 * jumpStrength * Vector3.up,ForceMode.Impulse);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Fruit" && canTakeDamage)
+        if (other.gameObject.CompareTag("Fruit") && canTakeDamage)
         {
             score++;
             Destroy(other.gameObject);
             UI.text = string.Format("Player {0}: {1}",playerNumber, score);
         }
-        if (other.gameObject.tag == "Spike" && canTakeDamage)
+        if (other.gameObject.CompareTag("Spike") && canTakeDamage)
         {
             movement.Disable();
             jump.Disable();
