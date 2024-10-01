@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public List<GameObject> players = new List<GameObject>();
     public List<string> playerNames = new List<string>();
     public List<int> playersScore = new List<int>();
 
     public List<int> playersIndexi = new List<int>();
+    public bool needsToUpdateBoardLevel = false;
+    public int currentPlayerIndexTurn;
 
     private void Awake()
     {
