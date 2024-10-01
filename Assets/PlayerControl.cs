@@ -107,7 +107,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             ""id"": ""2b850db2-aa4d-468f-8d5c-e54852dca253"",
             ""actions"": [
                 {
-                    ""name"": ""Walk P1"",
+                    ""name"": ""WalkP1"",
                     ""type"": ""Button"",
                     ""id"": ""221d9bd7-f2ba-4794-82b7-c983c2fa4cda"",
                     ""expectedControlType"": ""Button"",
@@ -116,7 +116,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump P1"",
+                    ""name"": ""JumpP1"",
                     ""type"": ""Button"",
                     ""id"": ""4a072253-ba53-4062-8a67-783821056fe8"",
                     ""expectedControlType"": ""Button"",
@@ -125,7 +125,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Walk P2"",
+                    ""name"": ""WalkP2"",
                     ""type"": ""Button"",
                     ""id"": ""a215bc16-728a-4da5-a4fd-6c8a8d4194a0"",
                     ""expectedControlType"": ""Button"",
@@ -134,7 +134,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump P2"",
+                    ""name"": ""JumpP2"",
                     ""type"": ""Button"",
                     ""id"": ""7d425fbc-dd45-4e57-9b64-6f02a4708a95"",
                     ""expectedControlType"": ""Button"",
@@ -151,7 +151,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk P1"",
+                    ""action"": ""WalkP1"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -162,7 +162,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk P1"",
+                    ""action"": ""WalkP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -173,7 +173,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk P1"",
+                    ""action"": ""WalkP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -184,7 +184,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump P1"",
+                    ""action"": ""JumpP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -195,7 +195,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk P2"",
+                    ""action"": ""WalkP2"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -206,7 +206,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk P2"",
+                    ""action"": ""WalkP2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -217,7 +217,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Walk P2"",
+                    ""action"": ""WalkP2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -228,7 +228,55 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump P2"",
+                    ""action"": ""JumpP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Controls_Off_the_Hook"",
+            ""id"": ""f3cd910b-b0fa-4b9c-abaa-3e9815577611"",
+            ""actions"": [
+                {
+                    ""name"": ""FishP1"",
+                    ""type"": ""Button"",
+                    ""id"": ""46e3d5b9-add7-47ce-bb1c-5d5ba6df0b28"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fish P2"",
+                    ""type"": ""Button"",
+                    ""id"": ""6301d457-d341-44f6-8d03-f0069dfb138a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9ea59e9d-3838-4a38-aa9c-33682c0c3c98"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FishP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f1a8433-d47b-463b-99b1-89312b363333"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fish P2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -244,10 +292,14 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_PlayerControllers_Roll = m_PlayerControllers.FindAction("Roll", throwIfNotFound: true);
         // Controls_Fruit_Drop
         m_Controls_Fruit_Drop = asset.FindActionMap("Controls_Fruit_Drop", throwIfNotFound: true);
-        m_Controls_Fruit_Drop_WalkP1 = m_Controls_Fruit_Drop.FindAction("Walk P1", throwIfNotFound: true);
-        m_Controls_Fruit_Drop_JumpP1 = m_Controls_Fruit_Drop.FindAction("Jump P1", throwIfNotFound: true);
-        m_Controls_Fruit_Drop_WalkP2 = m_Controls_Fruit_Drop.FindAction("Walk P2", throwIfNotFound: true);
-        m_Controls_Fruit_Drop_JumpP2 = m_Controls_Fruit_Drop.FindAction("Jump P2", throwIfNotFound: true);
+        m_Controls_Fruit_Drop_WalkP1 = m_Controls_Fruit_Drop.FindAction("WalkP1", throwIfNotFound: true);
+        m_Controls_Fruit_Drop_JumpP1 = m_Controls_Fruit_Drop.FindAction("JumpP1", throwIfNotFound: true);
+        m_Controls_Fruit_Drop_WalkP2 = m_Controls_Fruit_Drop.FindAction("WalkP2", throwIfNotFound: true);
+        m_Controls_Fruit_Drop_JumpP2 = m_Controls_Fruit_Drop.FindAction("JumpP2", throwIfNotFound: true);
+        // Controls_Off_the_Hook
+        m_Controls_Off_the_Hook = asset.FindActionMap("Controls_Off_the_Hook", throwIfNotFound: true);
+        m_Controls_Off_the_Hook_FishP1 = m_Controls_Off_the_Hook.FindAction("FishP1", throwIfNotFound: true);
+        m_Controls_Off_the_Hook_FishP2 = m_Controls_Off_the_Hook.FindAction("Fish P2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -437,6 +489,60 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         }
     }
     public Controls_Fruit_DropActions @Controls_Fruit_Drop => new Controls_Fruit_DropActions(this);
+
+    // Controls_Off_the_Hook
+    private readonly InputActionMap m_Controls_Off_the_Hook;
+    private List<IControls_Off_the_HookActions> m_Controls_Off_the_HookActionsCallbackInterfaces = new List<IControls_Off_the_HookActions>();
+    private readonly InputAction m_Controls_Off_the_Hook_FishP1;
+    private readonly InputAction m_Controls_Off_the_Hook_FishP2;
+    public struct Controls_Off_the_HookActions
+    {
+        private @PlayerControl m_Wrapper;
+        public Controls_Off_the_HookActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        public InputAction @FishP1 => m_Wrapper.m_Controls_Off_the_Hook_FishP1;
+        public InputAction @FishP2 => m_Wrapper.m_Controls_Off_the_Hook_FishP2;
+        public InputActionMap Get() { return m_Wrapper.m_Controls_Off_the_Hook; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Controls_Off_the_HookActions set) { return set.Get(); }
+        public void AddCallbacks(IControls_Off_the_HookActions instance)
+        {
+            if (instance == null || m_Wrapper.m_Controls_Off_the_HookActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_Controls_Off_the_HookActionsCallbackInterfaces.Add(instance);
+            @FishP1.started += instance.OnFishP1;
+            @FishP1.performed += instance.OnFishP1;
+            @FishP1.canceled += instance.OnFishP1;
+            @FishP2.started += instance.OnFishP2;
+            @FishP2.performed += instance.OnFishP2;
+            @FishP2.canceled += instance.OnFishP2;
+        }
+
+        private void UnregisterCallbacks(IControls_Off_the_HookActions instance)
+        {
+            @FishP1.started -= instance.OnFishP1;
+            @FishP1.performed -= instance.OnFishP1;
+            @FishP1.canceled -= instance.OnFishP1;
+            @FishP2.started -= instance.OnFishP2;
+            @FishP2.performed -= instance.OnFishP2;
+            @FishP2.canceled -= instance.OnFishP2;
+        }
+
+        public void RemoveCallbacks(IControls_Off_the_HookActions instance)
+        {
+            if (m_Wrapper.m_Controls_Off_the_HookActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IControls_Off_the_HookActions instance)
+        {
+            foreach (var item in m_Wrapper.m_Controls_Off_the_HookActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_Controls_Off_the_HookActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public Controls_Off_the_HookActions @Controls_Off_the_Hook => new Controls_Off_the_HookActions(this);
     public interface IPlayerControllersActions
     {
         void OnForward(InputAction.CallbackContext context);
@@ -449,5 +555,10 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         void OnJumpP1(InputAction.CallbackContext context);
         void OnWalkP2(InputAction.CallbackContext context);
         void OnJumpP2(InputAction.CallbackContext context);
+    }
+    public interface IControls_Off_the_HookActions
+    {
+        void OnFishP1(InputAction.CallbackContext context);
+        void OnFishP2(InputAction.CallbackContext context);
     }
 }
