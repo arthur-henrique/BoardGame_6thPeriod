@@ -5,7 +5,6 @@ using UnityEngine;
 public class BoardLevelManager : MonoBehaviour
 {
     //public List<Transform> initialTransforms = new List<Transform>();
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +14,33 @@ public class BoardLevelManager : MonoBehaviour
         //    for (int i = 0; i < GameManager.Instance.players.Count; i++)
         //        TrackLoopManager.instance.playersList.Add(GameManager.Instance.players[i]);
         //}
+
+        if(GameManager.Instance != null && GameManager.Instance.needsToUpdateBoardLevel)
+        {
+            GetIndexFromManager();
+            TrackLoopManager.instance.UpdatePositionByforce();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateIndex()
     {
-        
+        for (int i = 0; i < GameManager.Instance.playersIndexi.Count; i++)
+        {
+            GameManager.Instance.playersIndexi[i] = TrackLoopManager.instance.playersList[i].GetComponent<PlayerMovement>().currentIndex;
+        }
+        GameManager.Instance.needsToUpdateBoardLevel = true;
+    }
+    public void GetIndexFromManager()
+    {
+        for (int i = 0; i < GameManager.Instance.playersIndexi.Count; i++)
+        {
+            TrackLoopManager.instance.playersList[i].GetComponent<PlayerMovement>().currentIndex = GameManager.Instance.playersIndexi[i];
+        }
+    }
+
+    public void CallChangeLevel(int levelToGo)
+    {
+        UpdateIndex();
+        GameManager.Instance.ChangeLevels(levelToGo);
     }
 }

@@ -11,7 +11,7 @@ public class TrackLoopManager : MonoBehaviour
     public List<GameObject> playersList;
     public List<Cinemachine.CinemachineVirtualCamera> virtualCameras;
 
-    public int currentPlayerIndexTurn;
+    
 
     private void Awake()
     {
@@ -33,32 +33,40 @@ public class TrackLoopManager : MonoBehaviour
 
         for (int i = 0; i < playersList.Count; i++)
         {
-            if (i != currentPlayerIndexTurn)
+            if (i != GameManager.Instance.currentPlayerIndexTurn)
                 playersList[i].gameObject.GetComponent<PlayerMovement>().enabled = false;
         }
     }
 
     public void TurnTransition()
     {
-        if (currentPlayerIndexTurn >= playersList.Count -1 )
+        if (GameManager.Instance.currentPlayerIndexTurn >= playersList.Count -1 )
         {
-            currentPlayerIndexTurn = 0;
+            GameManager.Instance.currentPlayerIndexTurn = 0;
         }
         else
         {
-            currentPlayerIndexTurn++;
+            GameManager.Instance.currentPlayerIndexTurn++;
         }
 
         for (int i = 0; i < playersList.Count; i++)
         {
-            if (i != currentPlayerIndexTurn)
+            if (i != GameManager.Instance.currentPlayerIndexTurn)
             {
                 playersList[i].gameObject.GetComponent<PlayerMovement>().enabled = false;
                 virtualCameras[i].Priority = 0;
             }
         }
 
-        playersList[currentPlayerIndexTurn].gameObject.GetComponent<PlayerMovement>().enabled = true;
-        virtualCameras[currentPlayerIndexTurn].Priority = 1;
+        playersList[GameManager.Instance.currentPlayerIndexTurn].gameObject.GetComponent<PlayerMovement>().enabled = true;
+        virtualCameras[GameManager.Instance.currentPlayerIndexTurn].Priority = 1;
+    }
+
+    public void UpdatePositionByforce()
+    {
+        for (int i = 0;i < playersList.Count;i++)
+        {
+            playersList[i].transform.position = mainTrackTransforms[playersList[i].GetComponent<PlayerMovement>().currentIndex].position;
+        }
     }
 }
