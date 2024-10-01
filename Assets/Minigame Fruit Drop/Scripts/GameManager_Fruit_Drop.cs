@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager_Fruit_Drop : MonoBehaviour
 {
-    public List<GameObject> objects = new List<GameObject>();
+    public List<GameObject> objects = new();
     public GameObject spike;
     [SerializeField] private TextMeshProUGUI UI;
     [SerializeField] private float totalTime;
@@ -16,7 +16,7 @@ public class GameManager_Fruit_Drop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(spawnObject());
+        StartCoroutine(SpawnObject());
         StartCoroutine(Countdown());
         time = totalTime;
     }
@@ -27,11 +27,11 @@ public class GameManager_Fruit_Drop : MonoBehaviour
         spawnRate = 0.2f + 0.8f * (time /totalTime);
     }
 
-    IEnumerator spawnObject()
+    IEnumerator SpawnObject()
     {
         Instantiate(objects[Random.Range(0, 2)], new Vector3(Random.Range(-5, 6), 20, 0), Quaternion.identity);
         yield return new WaitForSeconds(spawnRate);
-        StartCoroutine(spawnObject());
+        StartCoroutine(SpawnObject());
     }
     IEnumerator Countdown()
     {

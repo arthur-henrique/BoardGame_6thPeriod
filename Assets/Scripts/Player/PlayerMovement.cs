@@ -21,14 +21,19 @@ public class PlayerMovement : MonoBehaviour
     public int playerIndex;
 
     private Vector3 startingPos;
+    private float jumpDistance;
+    private float currentPos;
+
+    Animator animator;
 
     private void Awake()
     {
         instance = this;
-        PlayerControl inputActions = new PlayerControl();
+        PlayerControl inputActions = new();
         forward = inputActions.PlayerControllers.Forward;
         side = inputActions.PlayerControllers.Sideward;
         roll = inputActions.PlayerControllers.Roll;
+        animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -53,27 +58,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isOnTurn)
         {
+            //Rolls dice
+            if (canRoll && roll.WasPressedThisFrame())
+            {
+                canRoll = false;
+                indexToGo = Random.Range(1, 7) + Random.Range(1, 7);
+                print(indexToGo);
+                isMoving = true;
+            }
+
             if (!isOnEvent && isMoving)
             {
+                //If player hasn't reached final space, move one space
                 if (indexToGo != 0)
                 {
-                    float variance_x = Random.Range(1.0f, 1.5f);
-                    float variance_z = Random.Range(1.0f, 1.5f);
-                    gameObject.transform.GetChild(0).transform.position = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
-                    Vector3 variance = new Vector3(variance_x, 0f, variance_z);
-                    transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position + variance, Time.deltaTime * speedMod);
-
-                    if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position + variance) <= 0.1)
-                    {
-                        startingPos = transform.position;
-                        currentIndex++;
-                        indexToGo -= 1;
-                        if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count)
-                        {
-                            currentIndex = 0;
-                        }
-                    }
-
+                    StartCoroutine(MoveOneSpace());
                 }
                 else
                 {
@@ -83,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
             }
 
+            //when the player reaches a fork
             if (isOnEvent)
             {
                 if (forward.ReadValue<float>() != 0)
@@ -97,21 +97,33 @@ public class PlayerMovement : MonoBehaviour
                     isOnEvent = false;
                 }
             }
-
-            if (canRoll)
-            {
-                if (roll.ReadValue<float>() != 0)
-                {
-                    canRoll = false;
-                    indexToGo = Random.Range(1, 7) + Random.Range(1, 7);
-                    print(indexToGo);
-                    isMoving = true;
-                }
-            }
-
         }
-    }
-        
+    }        
 
-        
+    IEnumerator MoveOneSpace()
+    {
+        //private float variance_x = Random.Range(0, 1.0f);
+        //private float variance_z = Random.Range(0, 1.0f);
+        //Vector3 variance = new(variance_x, 0f, variance_z);
+
+        //if player has arrived at the next space, set the next space to go
+        if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/) <= 0.1)
+        {
+            startingPos = transform.position;
+            currentIndex++;
+            jumpDistance = Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/);
+            indexToGo--;
+
+            //Loops back
+            if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { currentIndex = 0; }
+        }
+
+        currentPos = Mathf.PI * (Vector3.Distance(transform.position,startingPos)/ jumpDistance - 0.5f); //-PI/2 to PI/2
+
+        gameObject.transform.GetChild(0).transform.position = new Vector3(transform.position.x, transform.position.y + 0.6f + 5*Mathf.Cos(currentPos), transform.position.z);
+
+        transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/, Time.deltaTime * speedMod);
+
+        yield return null;
+    }
 }
