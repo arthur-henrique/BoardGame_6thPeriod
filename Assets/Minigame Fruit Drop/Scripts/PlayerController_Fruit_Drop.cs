@@ -44,21 +44,39 @@ public class PlayerController_Fruit_Drop : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        animator.SetBool("Fruit Game", true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 0, movement.ReadValue<float>() * 5 * Time.deltaTime);
+        transform.Translate(movement.ReadValue<float>() * 5 * Time.deltaTime, 0, 0);
+        if(movement.ReadValue<float>() < 0)
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+        }
         if (jump.WasPressedThisFrame() && rb.velocity.y==0.0f)
         {
             rb.AddForce(100 * jumpStrength * Vector3.up,ForceMode.Impulse);
+            
+        }
+        if(movement.WasPressedThisFrame())
+        {
+            animator.SetBool("IsWalking", true);
+        }
+        if (movement.WasReleasedThisFrame())
+        {
+            animator.SetBool("IsWalking", false);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Fruit") && canTakeDamage)
+        if (other.gameObject.CompareTag("Fruit"))
         {
             score++;
             Destroy(other.gameObject);
@@ -70,7 +88,7 @@ public class PlayerController_Fruit_Drop : MonoBehaviour
             jump.Disable();
             canTakeDamage = false;
             Destroy(other.gameObject);
-            animator.SetBool("Stun", true);
+            animator.SetBool("IsHit", true);
             StartCoroutine(TimerWait());
         }
     }
@@ -80,8 +98,9 @@ public class PlayerController_Fruit_Drop : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         movement.Enable();
         jump.Enable();
+        animator.SetBool("IsHit", false);
+        yield return new WaitForSeconds(1.0f);
         canTakeDamage = true;
-        animator.SetBool("Stun", false);
     }
 
 }

@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     public int playerIndex;
 
+    private Vector3 startingPos;
+
     private void Awake()
     {
         instance = this;
@@ -57,12 +59,13 @@ public class PlayerMovement : MonoBehaviour
                 {
                     float variance_x = Random.Range(1.0f, 1.5f);
                     float variance_z = Random.Range(1.0f, 1.5f);
-
+                    gameObject.transform.GetChild(0).transform.position = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
                     Vector3 variance = new Vector3(variance_x, 0f, variance_z);
                     transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position + variance, Time.deltaTime * speedMod);
 
                     if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position + variance) <= 0.1)
                     {
+                        startingPos = transform.position;
                         currentIndex++;
                         indexToGo -= 1;
                         if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count)
