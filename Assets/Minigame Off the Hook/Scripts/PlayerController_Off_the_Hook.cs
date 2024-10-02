@@ -46,7 +46,7 @@ public class PlayerController_Off_the_Hook : MonoBehaviour
         {
             rodAnimator.SetBool("IsAlert", true);
         }
-        if (!manager.GetComponent<GameManager_Off_the_Hook>().fishBite)
+        else 
             rodAnimator.SetBool("IsAlert", false);
         if (fish.WasPressedThisFrame() && manager.GetComponent<GameManager_Off_the_Hook>().fishBite)
         {

@@ -9,7 +9,6 @@ public class GameManager_Off_the_Hook : MonoBehaviour
     public bool fishBite = false;
     private int playerNumber;
 
-    [SerializeField] private Animator[] animator;
     [SerializeField] private GameObject fish;
 
     private Coroutine fishCoroutine;
@@ -31,9 +30,9 @@ public class GameManager_Off_the_Hook : MonoBehaviour
         yield return new WaitForSeconds(totalTime);
         alert.SetActive(true);
         fishBite = true;
-        Debug.Log("FISH!");
-        while (fishBite) { yield return null; }
-        Debug.Log("Fish Caught!");
+
+        while (fishBite) { yield return null; } //waits for player input
+
         SpawnFish(playerNumber);
         yield return new WaitForSeconds(0.5f);
         alert.SetActive(false);
