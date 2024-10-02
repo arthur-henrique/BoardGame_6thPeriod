@@ -5,8 +5,12 @@ using UnityEngine;
 public class GameManager_Off_the_Hook : MonoBehaviour
 {
     [SerializeField] private GameObject alert;
-    private float totalTime = 5;
+    private float totalTime = 3;
     public bool fishBite = false;
+    private int playerNumber;
+
+    [SerializeField] private Animator[] animator;
+    [SerializeField] private GameObject fish;
 
     private Coroutine fishCoroutine;
     // Start is called before the first frame update
@@ -30,14 +34,16 @@ public class GameManager_Off_the_Hook : MonoBehaviour
         Debug.Log("FISH!");
         while (fishBite) { yield return null; }
         Debug.Log("Fish Caught!");
-        yield return new WaitForSeconds(1);
+        SpawnFish(playerNumber);
+        yield return new WaitForSeconds(0.5f);
         alert.SetActive(false);
         totalTime = Random.Range(3, 10);
         StartCoroutine(FishCountdown());
     }
 
-    public void FishHooked()
+    public void FishHooked(int n)
     {
+        playerNumber = n;
         fishBite = false;
     }
 
@@ -45,5 +51,22 @@ public class GameManager_Off_the_Hook : MonoBehaviour
     {
         StopCoroutine(fishCoroutine);
         Debug.Log("EndGame");
+    }
+
+    private void SpawnFish(int n)
+    {
+        fish = Instantiate(fish, transform.position, transform.rotation);
+        fish.GetComponent<MeshRenderer>().material = new Material(fish.GetComponent<MeshRenderer>().material);
+        if (n == 1)
+        {
+            fish.GetComponent<Rigidbody>().AddForce(220 * new Vector3(-0.2f, 1, Random.Range(-0.1f,0.1f)), ForceMode.Impulse);
+            fish.transform.eulerAngles = new Vector3(70,90,0);
+        }
+
+        else
+        {
+            fish.GetComponent<Rigidbody>().AddForce(220 * new Vector3(0.2f, 1, 0), ForceMode.Impulse);
+            fish.transform.eulerAngles = new Vector3(70, -90, 0);
+        }
     }
 }
