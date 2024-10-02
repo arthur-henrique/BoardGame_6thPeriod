@@ -11,6 +11,7 @@ public class PlayerController_Off_the_Hook : MonoBehaviour
     [SerializeField] GameObject manager;
     Animator animator;
     Animator rodAnimator;
+    private bool gameOver = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -48,6 +49,12 @@ public class PlayerController_Off_the_Hook : MonoBehaviour
             Debug.Log("Player "+playerNumber+" = "+score);
             manager.GetComponent<GameManager_Off_the_Hook>().FishHooked();
         }
-        
+        if(score >= 1 && !gameOver)
+        {
+            gameOver = true;
+            manager.GetComponent<GameManager_Off_the_Hook>().EndGame();
+        }
     }
+
+
 }

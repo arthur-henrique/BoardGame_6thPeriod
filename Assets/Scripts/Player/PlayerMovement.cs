@@ -74,9 +74,15 @@ public class PlayerMovement : MonoBehaviour
                 {
                     StartCoroutine(MoveOneSpace());
                 }
+
+                //When the player reaches their final space
                 else
                 {
                     isMoving = false;
+                    //Loops back
+                    if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { currentIndex = 0; }
+                    if (currentIndex == 0) { currentIndex = TrackLoopManager.instance.mainTrackTransforms.Count + 1; }
+                    TrackLoopManager.instance.mainTrackTransforms[currentIndex-1].GetComponentInChildren<SpaceBehaviour>().DoTheThing();
                     TrackLoopManager.instance.TurnTransition();
                 }
 
@@ -119,7 +125,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
         currentPos = Mathf.PI * (Vector3.Distance(transform.position,startingPos)/ jumpDistance - 0.5f); //-PI/2 to PI/2
-
+        if (currentPos < 0) 
+        { 
+            animator.SetBool("IsJumping", true);
+            animator.SetBool("IsFalling", false);
+        }
+        else
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling", true);
+        }
         gameObject.transform.GetChild(0).transform.position = new Vector3(transform.position.x, transform.position.y + 0.6f + 5*Mathf.Cos(currentPos), transform.position.z);
 
         transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/, Time.deltaTime * speedMod);

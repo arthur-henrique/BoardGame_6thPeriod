@@ -3153,12 +3153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d23ae17510c81442a9f2b832d5d0280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
-  playerNames: []
-  playersScore: 
-  playersIndexi: 
+  playerNames:
+  - 
+  - 
+  playersScore: 0000000000000000
+  playersIndexi: 0000000000000000
+  needsToUpdateBoardLevel: 0
+  currentPlayerIndexTurn: 0
 --- !u!4 &1928896964
 Transform:
   m_ObjectHideFlags: 0

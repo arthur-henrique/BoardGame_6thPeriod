@@ -7,11 +7,13 @@ public class GameManager_Off_the_Hook : MonoBehaviour
     [SerializeField] private GameObject alert;
     private float totalTime = 5;
     public bool fishBite = false;
+
+    private Coroutine fishCoroutine;
     // Start is called before the first frame update
     void Start()
     {
         alert.SetActive(false);
-        StartCoroutine(FishCountdown());
+        fishCoroutine = StartCoroutine(FishCountdown());
     }
 
     // Update is called once per frame
@@ -37,5 +39,11 @@ public class GameManager_Off_the_Hook : MonoBehaviour
     public void FishHooked()
     {
         fishBite = false;
+    }
+
+    public void EndGame()
+    {
+        StopCoroutine(fishCoroutine);
+        Debug.Log("EndGame");
     }
 }
