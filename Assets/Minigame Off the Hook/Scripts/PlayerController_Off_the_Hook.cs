@@ -9,6 +9,8 @@ public class PlayerController_Off_the_Hook : MonoBehaviour
     int score = 0;
     int playerNumber;
     [SerializeField] GameObject manager;
+    Animator animator;
+    Animator rodAnimator;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,7 +26,10 @@ public class PlayerController_Off_the_Hook : MonoBehaviour
             fish = inputsGame.Controls_Off_the_Hook.FishP2;
             playerNumber = 2;
         }
+        animator = GetComponent<Animator>();
+        animator.SetBool("Fishing Game", true);
 
+        rodAnimator = transform.Find("FishingRod").GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -38,6 +43,8 @@ public class PlayerController_Off_the_Hook : MonoBehaviour
         if (fish.WasPressedThisFrame() && manager.GetComponent<GameManager_Off_the_Hook>().fishBite)
         {
             score++;
+            animator.SetTrigger("Catch");
+            rodAnimator.SetTrigger("Catch");
             Debug.Log("Player "+playerNumber+" = "+score);
             manager.GetComponent<GameManager_Off_the_Hook>().FishHooked();
         }
