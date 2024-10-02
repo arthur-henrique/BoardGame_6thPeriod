@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class PlayerCustomization : MonoBehaviour
 {
     [SerializeField]
-    private Material faceMaterial;
+    public Material faceMaterial;
 
     [SerializeField]
-    private Material bodyMaterial;
+    public Material bodyMaterial;
 
     [SerializeField]
     private FlexibleColorPicker colorPicker;
