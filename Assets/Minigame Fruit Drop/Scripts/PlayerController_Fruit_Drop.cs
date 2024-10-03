@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController_Fruit_Drop : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerController_Fruit_Drop : MonoBehaviour
     [SerializeField] float jumpStrength;
     bool canTakeDamage = true;
     TextMeshProUGUI UI;
+    [SerializeField] TextMeshProUGUI nameDisplay;
+    [SerializeField] RawImage avatarDisplay;
     int playerNumber;
 
     private void Awake()
@@ -45,6 +48,7 @@ public class PlayerController_Fruit_Drop : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         animator.SetBool("Fruit Game", true);
+        avatarDisplay.texture = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().materials[1].mainTexture;
     }
 
     // Update is called once per frame
@@ -80,7 +84,8 @@ public class PlayerController_Fruit_Drop : MonoBehaviour
         {
             score++;
             Destroy(other.gameObject);
-            UI.text = string.Format("Player {0}: {1}",playerNumber, score);
+            //UI.text = string.Format("Player {0}: {1}",playerNumber, score);
+            UI.text = score.ToString();
         }
         if (other.gameObject.CompareTag("Spike") && canTakeDamage)
         {
