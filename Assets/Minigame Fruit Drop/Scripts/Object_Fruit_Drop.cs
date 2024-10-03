@@ -18,6 +18,7 @@ public class Object_Fruit_Drop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.Rotate(0, 0, 50 * Time.deltaTime);
         if (lifeTime > 0)
             lifeTime -= Time.deltaTime;
         else

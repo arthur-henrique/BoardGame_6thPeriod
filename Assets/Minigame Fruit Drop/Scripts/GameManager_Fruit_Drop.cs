@@ -12,7 +12,8 @@ public class GameManager_Fruit_Drop : MonoBehaviour
     [SerializeField] private float totalTime;
     private float time;
     public float spawnRate = 1;
-
+    private int random;
+    private GameObject newObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,9 @@ public class GameManager_Fruit_Drop : MonoBehaviour
 
     IEnumerator SpawnObject()
     {
-        Instantiate(objects[Random.Range(0, 2)], new Vector3(Random.Range(-5, 6), 20, 0), Quaternion.identity);
+        random = Random.Range(0, 2);
+        newObject = Instantiate(objects[random], new Vector3(Random.Range(-5, 6), 20, 0), Quaternion.identity);
+        newObject.transform.eulerAngles = new Vector3(0, Random.Range(0, 180), 0);
         yield return new WaitForSeconds(spawnRate);
         StartCoroutine(SpawnObject());
     }
