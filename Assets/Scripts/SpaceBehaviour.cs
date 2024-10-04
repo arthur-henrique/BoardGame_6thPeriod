@@ -45,7 +45,7 @@ public class SpaceBehaviour : MonoBehaviour
                 Shortcut();
                 break;
         }
-        TrackLoopManager.instance.TurnTransition();
+        
     }
 
 
@@ -74,6 +74,7 @@ public class SpaceBehaviour : MonoBehaviour
         Debug.Log("Coin Gain");
         gm.playersScore[gm.currentPlayerIndexTurn] += 3;
         Debug.Log(gm.playersScore[gm.currentPlayerIndexTurn]);
+        TrackLoopManager.instance.TurnTransition();
     }
 
     private void CoinLose()
@@ -84,6 +85,7 @@ public class SpaceBehaviour : MonoBehaviour
         else
             gm.playersScore[gm.currentPlayerIndexTurn] = 0;
         Debug.Log(gm.playersScore[gm.currentPlayerIndexTurn]);
+        TrackLoopManager.instance.TurnTransition();
     }
 
     private void Shortcut()
