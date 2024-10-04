@@ -54,7 +54,7 @@ public class PlayerController_Off_the_Hook : MonoBehaviour
             animator.SetTrigger("Catch");
             rodAnimator.SetTrigger("Catch");
             Debug.Log("Player "+playerNumber+" = "+score);
-            manager.GetComponent<GameManager_Off_the_Hook>().FishHooked(playerNumber);
+            manager.GetComponent<GameManager_Off_the_Hook>().FishHooked(playerNumber, score);
         }
         if(score >= 3 && !gameOver)
         {
