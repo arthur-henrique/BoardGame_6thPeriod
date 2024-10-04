@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpaceBehaviour : MonoBehaviour
 {
     public enum spaceType { minigame,quiz,coinGain,coinLose,shortcut};
     public spaceType tile;
+    public Material minigameMat;
     public Material coinGainMat;
     public Material coinLoseMat;
     public Material shortcutMat;
 
     private GameManager gm;
+    public int timeToWait = 2;
 
     // Start is called before the first frame update
     void Start()
     {
         gm = GameManager.Instance;
+        ChooseColor();
     }
 
     // Update is called once per frame
@@ -28,6 +32,9 @@ public class SpaceBehaviour : MonoBehaviour
     {
         switch (tile)
         {
+            case spaceType.minigame:
+                StartMinigame();
+                break;
             case spaceType.coinGain:
                 CoinGain();
                 break;
@@ -38,6 +45,7 @@ public class SpaceBehaviour : MonoBehaviour
                 Shortcut();
                 break;
         }
+        TrackLoopManager.instance.TurnTransition();
     }
 
 
@@ -46,6 +54,9 @@ public class SpaceBehaviour : MonoBehaviour
     {
         switch (tile)
         {
+            case spaceType.minigame:
+                gameObject.GetComponent<MeshRenderer>().sharedMaterial = minigameMat;
+                break;
             case spaceType.coinGain:
                 gameObject.GetComponent<MeshRenderer>().sharedMaterial = coinGainMat;
                 break;
@@ -78,5 +89,18 @@ public class SpaceBehaviour : MonoBehaviour
     private void Shortcut()
     {
 
+    }
+
+    private void StartMinigame()
+    {
+        int randonMinigame = Random.Range(2, 4);
+        StartCoroutine(MinigameTimerCountdown(randonMinigame));
+    }
+
+    private IEnumerator MinigameTimerCountdown(int sceneToLoad)
+    {
+        yield return new WaitForSecondsRealtime(timeToWait);
+        GameManager.Instance.needsToUpdateTurn = true;
+        SceneManager.LoadScene(sceneToLoad);
     }
 }

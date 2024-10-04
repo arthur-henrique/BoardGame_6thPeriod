@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
     public List<int> playersScore = new List<int>();
 
     public List<int> playersIndexi = new List<int>();
+    public List<Vector3> playerCamerasRotation = new List<Vector3>();
     public bool needsToUpdateBoardLevel = false;
+    public bool needsToUpdateTurn = false;
     public int currentPlayerIndexTurn;
 
     [Header("Player Customizations")]

@@ -19,15 +19,17 @@ public class CameraMover : MonoBehaviour
         for (int i = 0; i < cinemachineVirtualCameras.Length; i++)
         {
             transposer[i] = cinemachineVirtualCameras[i].GetCinemachineComponent<CinemachineTransposer>();
+            if(GameManager.Instance.playerCamerasRotation.Count == 0)
+            {
+                GameManager.Instance.playerCamerasRotation.Add(transposer[i].m_FollowOffset);
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.LogWarning("Collided");
         if (other.tag == "Player")
         {
-            Debug.LogWarning("CollidedIf");
             StartOffsetLerp(offsetToGo, GameManager.Instance.currentPlayerIndexTurn);
         }
     }
@@ -58,5 +60,7 @@ public class CameraMover : MonoBehaviour
         }
 
         transposer[whichCamera].m_FollowOffset = targetOffset;
+        GameManager.Instance.playerCamerasRotation[whichCamera] = targetOffset;
     }
+
 }

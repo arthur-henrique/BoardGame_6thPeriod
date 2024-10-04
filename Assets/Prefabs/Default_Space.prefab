@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: 2
+  minigameMat: {fileID: 2100000, guid: 84333f660e80cf045a9968ff41cef56b, type: 2}
   coinGainMat: {fileID: 2100000, guid: 8a287ca1adaa17b4393446af6ac8186c, type: 2}
   coinLoseMat: {fileID: 2100000, guid: 9a1991a8c0b80354cb679a812ff5cf65, type: 2}
   shortcutMat: {fileID: 2100000, guid: 913a21c9516b4654ba89b7048b9bb23a, type: 2}
+  timeToWait: 2

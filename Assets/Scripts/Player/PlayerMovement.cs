@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
                     if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { currentIndex = 0; }
                     if (currentIndex == 0) { currentIndex = TrackLoopManager.instance.mainTrackTransforms.Count + 1; }
                     TrackLoopManager.instance.mainTrackTransforms[currentIndex-1].GetComponentInChildren<SpaceBehaviour>().DoTheThing();
-                    TrackLoopManager.instance.TurnTransition();
+                    //TrackLoopManager.instance.TurnTransition();
                 }
 
             }
@@ -138,7 +138,6 @@ public class PlayerMovement : MonoBehaviour
         gameObject.transform.GetChild(0).transform.position = new Vector3(transform.position.x, transform.position.y + 0.6f + 5*Mathf.Cos(currentPos), transform.position.z);
 
         transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/, Time.deltaTime * speedMod);
-
         yield return null;
     }
 }

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,8 @@ using UnityEngine;
 public class BoardLevelManager : MonoBehaviour
 {
     //public List<Transform> initialTransforms = new List<Transform>();
-    // Start is called before the first frame update
+    public CinemachineVirtualCamera[] cinemachineVirtualCameras;
+    public CinemachineTransposer[] transposer;
     void Start()
     {
         //if(GameManager.Instance != null)
@@ -19,6 +21,21 @@ public class BoardLevelManager : MonoBehaviour
         {
             GetIndexFromManager();
             TrackLoopManager.instance.UpdatePositionByforce();
+
+            if(GameManager.Instance.needsToUpdateTurn)
+            {
+                GameManager.Instance.needsToUpdateTurn = false;
+                TrackLoopManager.instance.TurnTransition();
+            }
+        }
+
+        for (int i = 0; i < cinemachineVirtualCameras.Length; i++)
+        {
+            transposer[i] = cinemachineVirtualCameras[i].GetCinemachineComponent<CinemachineTransposer>();
+            if (GameManager.Instance.playerCamerasRotation.Count != 0)
+            {
+                transposer[i].m_FollowOffset = GameManager.Instance.playerCamerasRotation[i];
+            }
         }
     }
 
