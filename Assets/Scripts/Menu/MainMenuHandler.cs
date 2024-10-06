@@ -147,4 +147,14 @@ public class MainMenuHandler : MonoBehaviour
     {
         return t * (2f - t); // Simple quadratic ease-out function
     }
-}
+
+    public void ToggleFullscreen()
+    {
+        if (Screen.fullScreenMode == FullScreenMode.Windowed)
+        {
+            Screen.fullScreenMode = FullScreenMode.MaximizedWindow;//
+        }
+        else 
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+        }
+    }

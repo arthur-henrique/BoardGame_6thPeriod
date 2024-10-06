@@ -284,6 +284,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6755745853768129335, guid: fcd92e674fa2ce640b3af9155bb05d63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1758549837}
+    - targetCorrespondingSourceObject: {fileID: 6755745853768129335, guid: fcd92e674fa2ce640b3af9155bb05d63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1758549840}
   m_SourcePrefab: {fileID: 100100000, guid: fcd92e674fa2ce640b3af9155bb05d63, type: 3}
 --- !u!1 &50385610
 GameObject:
@@ -949,6 +952,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6755745853768129335, guid: fcd92e674fa2ce640b3af9155bb05d63, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2050591771}
+    - targetCorrespondingSourceObject: {fileID: 6755745853768129335, guid: fcd92e674fa2ce640b3af9155bb05d63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2050591774}
   m_SourcePrefab: {fileID: 100100000, guid: fcd92e674fa2ce640b3af9155bb05d63, type: 3}
 --- !u!4 &562913161 stripped
 Transform:
@@ -2386,6 +2392,24 @@ CapsuleCollider:
   m_Height: 3.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!114 &1758549840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758549836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23abba9963df24d4eae49cb773a0c9f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceMaterial: {fileID: 2100000, guid: def9f621ee75d274284f491df92054ea, type: 2}
+  bodyMaterial: {fileID: 2100000, guid: c8a4d46399313f84ea6463b2cdf4f0fb, type: 2}
+  avatarDisplay: {fileID: 944610476}
+  nameDisplay: {fileID: 1883322341}
+  playerIndex: 0
+  scoreDisplay: {fileID: 359059777}
 --- !u!1 &1778561989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2951,6 +2975,24 @@ CapsuleCollider:
   m_Height: 3.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!114 &2050591774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050591770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23abba9963df24d4eae49cb773a0c9f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceMaterial: {fileID: 2100000, guid: 83114d6732ce1b74ca574c3a15836faf, type: 2}
+  bodyMaterial: {fileID: 2100000, guid: ff30a323e0b98044e89375fdc1b3c137, type: 2}
+  avatarDisplay: {fileID: 251981332}
+  nameDisplay: {fileID: 1318564120}
+  playerIndex: 1
+  scoreDisplay: {fileID: 794954982}
 --- !u!1 &2055672678
 GameObject:
   m_ObjectHideFlags: 0

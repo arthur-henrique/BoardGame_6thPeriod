@@ -21,6 +21,9 @@ public class PlayerSkin : MonoBehaviour
     [SerializeField]
     private int playerIndex;
 
+    [SerializeField]
+    private TextMeshProUGUI scoreDisplay;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +38,13 @@ public class PlayerSkin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.Instance)
+        {
+            if (scoreDisplay)
+            {
+                scoreDisplay.text = GameManager.Instance.playersScore[playerIndex].ToString();
+            }
+            
+        }
     }
 }
