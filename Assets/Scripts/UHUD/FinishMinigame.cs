@@ -33,7 +33,10 @@ public class FinishMinigame : MonoBehaviour
         velocity *= Mathf.Exp(-damping * Time.unscaledDeltaTime); // Damping effect
         img.rectTransform.localScale += velocity * Time.unscaledDeltaTime;
     }
-
+    public void GoToIslandActivator()
+    {
+        StartCoroutine(GoToIsland());
+    }
     private IEnumerator GoToIsland()
     {
         yield return new WaitForSecondsRealtime(2f);

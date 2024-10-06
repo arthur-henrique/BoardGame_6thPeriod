@@ -90,7 +90,7 @@ public class SpaceBehaviour : MonoBehaviour
 
     private void Shortcut()
     {
-
+        TrackLoopManager.instance.TurnTransition();
     }
 
     private void StartMinigame()
@@ -103,6 +103,6 @@ public class SpaceBehaviour : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(timeToWait);
         GameManager.Instance.needsToUpdateTurn = true;
-        SceneManager.LoadScene(sceneToLoad);
+        BoardLevelManager.Instance.CallChangeLevel(sceneToLoad);
     }
 }

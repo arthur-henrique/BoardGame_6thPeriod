@@ -287,6 +287,8 @@ MonoBehaviour:
   minigameDesc: lask jlaksrjaklsren asnhrk slkrj qlwjrlk jklxcgjlxdglkwtel jsdl xc
     vljxkcj wketj slk jxlkc jlwketj lc jlcxvlgj lkdjtl jxcl jkbl et jsxlckgj lkdj
     lketjlck jbb
+  springStrength: 27200
+  damping: 250
 --- !u!1 &6390008902862717749
 GameObject:
   m_ObjectHideFlags: 0

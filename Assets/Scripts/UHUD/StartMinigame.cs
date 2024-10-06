@@ -75,7 +75,11 @@ public class StartMinigame : MonoBehaviour
         img.rectTransform.localScale += velocity * Time.unscaledDeltaTime;
     }
 
-    private IEnumerator GoToIsland()
+    public void GoToIslandActivator()
+    {
+        StartCoroutine(GoToIsland());
+    }
+    public IEnumerator GoToIsland()
     {
         yield return new WaitForSecondsRealtime(2f);
         Time.timeScale = 1;

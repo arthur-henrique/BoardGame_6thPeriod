@@ -5,9 +5,23 @@ using UnityEngine;
 
 public class BoardLevelManager : MonoBehaviour
 {
+    static public BoardLevelManager Instance;
     //public List<Transform> initialTransforms = new List<Transform>();
     public CinemachineVirtualCamera[] cinemachineVirtualCameras;
     public CinemachineTransposer[] transposer;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
     void Start()
     {
         //if(GameManager.Instance != null)
@@ -51,7 +65,7 @@ public class BoardLevelManager : MonoBehaviour
     {
         for (int i = 0; i < GameManager.Instance.playersIndexi.Count; i++)
         {
-            TrackLoopManager.instance.playersList[i].GetComponent<PlayerMovement>().currentIndex = GameManager.Instance.playersIndexi[i];
+            TrackLoopManager.instance.playersList[i].GetComponent<PlayerMovement>().currentIndex = GameManager.Instance.playersIndexi[i] - 1;
         }
     }
 
