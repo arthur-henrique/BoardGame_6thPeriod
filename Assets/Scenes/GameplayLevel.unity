@@ -2776,6 +2776,10 @@ PrefabInstance:
       propertyPath: speedMod
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5711923289571870826, guid: 7c4a6e578abb2ea47a5007c0324efd88, type: 3}
+      propertyPath: diceDisplay
+      value: 
+      objectReference: {fileID: 1496417442}
     - target: {fileID: 6588882747124420863, guid: 7c4a6e578abb2ea47a5007c0324efd88, type: 3}
       propertyPath: m_Name
       value: FirstPlayer
@@ -4497,7 +4501,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fef7ec8950d4314a864229097cbd38f, type: 2}
   m_sharedMaterial: {fileID: 1358186112481143779, guid: 4fef7ec8950d4314a864229097cbd38f, type: 2}
@@ -5681,7 +5685,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fef7ec8950d4314a864229097cbd38f, type: 2}
   m_sharedMaterial: {fileID: 1358186112481143779, guid: 4fef7ec8950d4314a864229097cbd38f, type: 2}
@@ -6160,6 +6164,10 @@ PrefabInstance:
       propertyPath: speedMod
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5711923289571870826, guid: 7c4a6e578abb2ea47a5007c0324efd88, type: 3}
+      propertyPath: diceDisplay
+      value: 
+      objectReference: {fileID: 1221769907}
     - target: {fileID: 5711923289571870826, guid: 7c4a6e578abb2ea47a5007c0324efd88, type: 3}
       propertyPath: playerIndex
       value: 1

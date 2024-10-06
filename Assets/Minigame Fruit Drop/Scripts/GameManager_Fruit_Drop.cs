@@ -14,6 +14,9 @@ public class GameManager_Fruit_Drop : MonoBehaviour
     public float spawnRate = 1;
     private int random;
     private GameObject newObject;
+    [SerializeField]
+    private GameObject finishMinigameCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +48,11 @@ public class GameManager_Fruit_Drop : MonoBehaviour
         {
             StartCoroutine(Countdown());
         }
-        else 
+        else
+        {
             Time.timeScale = 0;
+            Instantiate(finishMinigameCanvas);
+        }
+            
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private float currentPos;
 
     Animator animator;
+
+    public TextMeshPro diceDisplay;
 
     private void Awake()
     {
@@ -63,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 canRoll = false;
                 indexToGo = Random.Range(1, 7) + Random.Range(1, 7);
+                diceDisplay.text = indexToGo.ToString();
                 print(indexToGo);
                 isMoving = true;
             }
@@ -119,6 +123,8 @@ public class PlayerMovement : MonoBehaviour
             currentIndex++;
             jumpDistance = Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/);
             indexToGo--;
+            diceDisplay.text = indexToGo.ToString();
+            if (indexToGo == 0) { diceDisplay.text = ""; }
 
             //Loops back
             if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { currentIndex = 0; }

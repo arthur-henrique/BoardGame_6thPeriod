@@ -17,6 +17,10 @@ public class GameManager_Off_the_Hook : MonoBehaviour
     private Vector3 ogCameraPos;
 
     private Coroutine fishCoroutine;
+
+    [SerializeField]
+    private GameObject finishMinigameCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +74,7 @@ public class GameManager_Off_the_Hook : MonoBehaviour
     {
         gameOver = true;
         StopCoroutine(fishCoroutine);
+        Instantiate(finishMinigameCanvas);
     }
 
     private void SpawnFish(int n)
