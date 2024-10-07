@@ -60,6 +60,8 @@ public class PlayerController_Off_the_Hook : MonoBehaviour
         {
             gameOver = true;
             manager.GetComponent<GameManager_Off_the_Hook>().EndGame();
+            GameObject gm = GameObject.Find("GameManager");
+            gm.GetComponent<GameManager>().playersScore[playerNumber-1] = gm.GetComponent<GameManager>().playersScore[playerNumber-1] + 5;
         }
     }
 

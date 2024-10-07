@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class FinishMinigame : MonoBehaviour
@@ -13,6 +14,32 @@ public class FinishMinigame : MonoBehaviour
     public float springStrength = 850*32;
     public float damping = 250;
 
+    public InputAction forward, side, roll;
+
+    private bool stopWorking = false;
+
+    private void Awake()
+    {
+        PlayerControl inputActions = new PlayerControl();
+        forward = inputActions.PlayerControllers.Forward;
+        side = inputActions.PlayerControllers.Sideward;
+        roll = inputActions.PlayerControllers.Roll;
+    }
+
+    private void OnEnable()
+    {
+        forward.Enable();
+        side.Enable();
+        roll.Enable();
+    }
+
+    private void OnDisable()
+    {
+        forward.Disable();
+        side.Disable();
+        roll.Disable();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +50,15 @@ public class FinishMinigame : MonoBehaviour
     void Update()
     {
         ImageSpring(mainImage, new Vector3(1, 1, 1), springStrength, damping, velocityMainImage);
+        if (forward.WasPressedThisFrame() || side.WasPressedThisFrame() || roll.WasPressedThisFrame())
+        {
+            if (!stopWorking)
+            {
+                GoToIslandActivator();
+                stopWorking = true;
+            }
+            
+        }
     }
 
     private void ImageSpring(Image img, Vector3 targetPosition, float springStrength, float damping, Vector3 velocity)
@@ -39,7 +75,7 @@ public class FinishMinigame : MonoBehaviour
     }
     private IEnumerator GoToIsland()
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return null;
         Time.timeScale = 1;
         GameManager.Instance.ChangeLevels(1);
     }

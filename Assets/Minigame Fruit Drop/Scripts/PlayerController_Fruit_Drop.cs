@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PlayerController_Fruit_Drop : MonoBehaviour
 {
     InputAction movement, jump;
-    int score = 0;
+    public int score = 0;
     Rigidbody rb;
     Animator animator;
     [SerializeField] float jumpStrength;

@@ -748,6 +748,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1687751203650939840, guid: fcd92e674fa2ce640b3af9155bb05d63, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff30a323e0b98044e89375fdc1b3c137, type: 2}
+    - target: {fileID: 1687751203650939840, guid: fcd92e674fa2ce640b3af9155bb05d63, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 83114d6732ce1b74ca574c3a15836faf, type: 2}
     - target: {fileID: 6236055723187011981, guid: fcd92e674fa2ce640b3af9155bb05d63, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7
@@ -2860,7 +2868,7 @@ MonoBehaviour:
   faceMaterial: {fileID: 2100000, guid: 83114d6732ce1b74ca574c3a15836faf, type: 2}
   bodyMaterial: {fileID: 2100000, guid: ff30a323e0b98044e89375fdc1b3c137, type: 2}
   avatarDisplay: {fileID: 1697184567}
-  nameDisplay: {fileID: 2054088126}
+  nameDisplay: {fileID: 1923210581}
   playerIndex: 1
   scoreDisplay: {fileID: 0}
 --- !u!1001 &1702462900
