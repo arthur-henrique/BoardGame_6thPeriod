@@ -50,8 +50,8 @@ public class GameManager_Fruit_Drop : MonoBehaviour
         }
         else
         {
-            GameObject.Find("GameManager").GetComponent<GameManager>().playersScore[1] = GameObject.Find("GameManager").GetComponent<GameManager>().playersScore[1] + GameObject.Find("Player 1").GetComponent<PlayerController_Fruit_Drop>().score;
-            GameObject.Find("GameManager").GetComponent<GameManager>().playersScore[2] = GameObject.Find("GameManager").GetComponent<GameManager>().playersScore[2] + GameObject.Find("Player 2").GetComponent<PlayerController_Fruit_Drop>().score;
+            GameObject.Find("GameManager").GetComponent<GameManager>().playersScore[0] = GameObject.Find("GameManager").GetComponent<GameManager>().playersScore[0] + GameObject.Find("Player 1").GetComponent<PlayerController_Fruit_Drop>().score;
+            GameObject.Find("GameManager").GetComponent<GameManager>().playersScore[1] = GameObject.Find("GameManager").GetComponent<GameManager>().playersScore[1] + GameObject.Find("Player 2").GetComponent<PlayerController_Fruit_Drop>().score;
             Time.timeScale = 0;
             Instantiate(finishMinigameCanvas);
         }
