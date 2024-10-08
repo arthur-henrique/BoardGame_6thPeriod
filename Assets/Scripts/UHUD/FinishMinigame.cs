@@ -50,7 +50,7 @@ public class FinishMinigame : MonoBehaviour
     void Update()
     {
         ImageSpring(mainImage, new Vector3(1, 1, 1), springStrength, damping, velocityMainImage);
-        if (forward.WasPressedThisFrame() || side.WasPressedThisFrame() || roll.WasPressedThisFrame())
+        if (roll.WasPressedThisFrame())
         {
             if (!stopWorking)
             {

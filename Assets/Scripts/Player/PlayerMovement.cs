@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Moves pawn towards next space
         transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/, Time.deltaTime * speedMod);
-
+        //gameObject.transform.GetChild(0).LookAt(TrackLoopManager.instance.mainTrackTransforms[currentIndex].position);
         animator.SetBool("IsJumping", true);
 
         if (currentPos > 0.6)

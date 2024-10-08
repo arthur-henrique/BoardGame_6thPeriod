@@ -59,7 +59,7 @@ public class StartMinigame : MonoBehaviour
     void Update()
     {
         ImageSpring(mainImage, new Vector3(1, 1, 1), springStrength, damping, velocityMainImage);
-        if (forward.WasPressedThisFrame() || side.WasPressedThisFrame() || roll.WasPressedThisFrame())
+        if (roll.WasPressedThisFrame())
         {
             Time.timeScale = 1;
             Destroy(this.gameObject);

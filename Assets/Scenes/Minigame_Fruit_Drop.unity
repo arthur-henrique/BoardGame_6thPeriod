@@ -2380,6 +2380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef31ee85e0624a418c465fddefb2d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   jumpStrength: 400
   nameDisplay: {fileID: 1883322341}
   avatarDisplay: {fileID: 944610476}
@@ -3174,6 +3175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef31ee85e0624a418c465fddefb2d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   jumpStrength: 400
   nameDisplay: {fileID: 1318564120}
   avatarDisplay: {fileID: 251981332}
@@ -5658,17 +5660,17 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 900742197}
+  - {fileID: 1678811268}
+  - {fileID: 36744412}
+  - {fileID: 411825909}
+  - {fileID: 2139879853}
+  - {fileID: 1850035533}
   - {fileID: 1050476328}
   - {fileID: 1017687940}
   - {fileID: 769978172}
   - {fileID: 1778561991}
-  - {fileID: 2139879853}
-  - {fileID: 1678811268}
   - {fileID: 1913578157}
   - {fileID: 1795443658}
   - {fileID: 2105525422}
   - {fileID: 60076578}
   - {fileID: 4538256611652511630}
-  - {fileID: 36744412}
-  - {fileID: 411825909}
-  - {fileID: 1850035533}

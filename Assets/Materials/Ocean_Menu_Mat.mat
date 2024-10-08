@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ocean_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: b364e75c44d55a340865a925c3701954, type: 3}
+  m_Name: Ocean_Menu_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: ac9eff731d547cc4187fea38d45dc2c4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

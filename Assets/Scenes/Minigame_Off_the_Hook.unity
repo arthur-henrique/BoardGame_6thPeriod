@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 22739628}
   - component: {fileID: 22739627}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: P2 pfp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2747,7 +2747,7 @@ GameObject:
   - component: {fileID: 1697184568}
   - component: {fileID: 1697184567}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: P1 pfp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2867,7 +2867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceMaterial: {fileID: 2100000, guid: 83114d6732ce1b74ca574c3a15836faf, type: 2}
   bodyMaterial: {fileID: 2100000, guid: ff30a323e0b98044e89375fdc1b3c137, type: 2}
-  avatarDisplay: {fileID: 1697184567}
+  avatarDisplay: {fileID: 22739627}
   nameDisplay: {fileID: 1923210581}
   playerIndex: 1
   scoreDisplay: {fileID: 0}

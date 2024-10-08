@@ -76,16 +76,18 @@ public class PlayerController_Fruit_Drop : MonoBehaviour
         {
             animator.SetBool("IsWalking", false);
         }
+
+        //UI.text = (GameObject.Find("GameManager").GetComponent<GameManager>().playersScore[playerNumber - 1] + score).ToString();
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Fruit"))
         {
-            score++;
+            GameObject.Find("GameManager").GetComponent<GameManager>().playersScore[playerNumber-1]++;
             Destroy(other.gameObject);
             //UI.text = string.Format("Player {0}: {1}",playerNumber, score);
-            UI.text = score.ToString();
         }
         if (other.gameObject.CompareTag("Spike") && canTakeDamage)
         {
