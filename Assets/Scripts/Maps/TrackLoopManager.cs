@@ -67,6 +67,17 @@ public class TrackLoopManager : MonoBehaviour
         for (int i = 0;i < playersList.Count;i++)
         {
             playersList[i].transform.position = mainTrackTransforms[playersList[i].GetComponent<PlayerMovement>().currentIndex].position;
+            playersList[i].GetComponent<PlayerMovement>().currentLap = GameManager.Instance.playerLaps[i];
         }
     }
+
+    public void GetLapCount()
+    {
+        for (int i = 0; i < playersList.Count; i++)
+        {
+             GameManager.Instance.playerLaps[i] = playersList[i].GetComponent<PlayerMovement>().currentLap;
+        }
+    }
+
+
 }

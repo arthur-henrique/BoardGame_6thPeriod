@@ -73,5 +73,6 @@ public class BoardLevelManager : MonoBehaviour
     {
         UpdateIndex();
         GameManager.Instance.ChangeLevels(levelToGo);
+        TrackLoopManager.instance.GetLapCount();
     }
 }

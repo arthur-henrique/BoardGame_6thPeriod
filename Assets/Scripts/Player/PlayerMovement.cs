@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private float jumpDistance;
     private float currentPos;
 
+    public int currentLap;
+
     Animator animator;
 
     public TextMeshPro diceDisplay;

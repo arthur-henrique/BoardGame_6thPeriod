@@ -10,12 +10,15 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public List<string> playerNames = new List<string>();
     public List<int> playersScore = new List<int>();
+    public List<int> playerLaps = new List<int>();
 
     public List<int> playersIndexi = new List<int>();
     public List<Vector3> playerCamerasRotation = new List<Vector3>();
     public bool needsToUpdateBoardLevel = false;
     public bool needsToUpdateTurn = false;
     public int currentPlayerIndexTurn;
+
+
 
     [Header("Player Customizations")]
 
@@ -35,6 +38,8 @@ public class GameManager : MonoBehaviour
     private Material materialBodyTwo;
     private Material materialFaceOne;
     private Material materialFaceTwo;
+
+
 
     private void Awake()
     {
@@ -75,5 +80,21 @@ public class GameManager : MonoBehaviour
     public void LoadPlayerInfo()
     {
 
+    }
+
+    public void EndGame()
+    {
+        Time.timeScale = 0.0f;
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < playerLaps.Count; i++)
+        {
+            if (playerLaps[i] >=5)
+            {
+                EndGame();
+            }
+        }
     }
 }

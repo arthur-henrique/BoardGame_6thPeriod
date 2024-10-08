@@ -8504,6 +8504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNames: []
   playersScore: 0000000000000000
+  playerLaps: 0000000000000000
   playersIndexi: 0000000000000000
   playerCamerasRotation: []
   needsToUpdateBoardLevel: 0
