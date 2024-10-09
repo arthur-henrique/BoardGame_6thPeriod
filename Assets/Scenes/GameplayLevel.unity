@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 128509840}
   - component: {fileID: 128509839}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Camera Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -695,12 +695,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 605006526781176421, guid: b66805392686887499edd94f3b9baa52, type: 3}
       propertyPath: tile
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1917836841456656111, guid: b66805392686887499edd94f3b9baa52, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9a1991a8c0b80354cb679a812ff5cf65, type: 2}
+      objectReference: {fileID: 2100000, guid: 8a287ca1adaa17b4393446af6ac8186c, type: 2}
     - target: {fileID: 2182187726332439281, guid: b66805392686887499edd94f3b9baa52, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.03
@@ -1625,7 +1625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGate: 1
-  indexFactor: 16
+  indexFactor: 15
 --- !u!65 &537885912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4098,7 +4098,7 @@ GameObject:
   - component: {fileID: 1098809311}
   - component: {fileID: 1098809310}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Shortcut Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

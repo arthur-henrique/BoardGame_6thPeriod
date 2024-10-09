@@ -107,6 +107,8 @@ public class PlayerMovement : MonoBehaviour
                     print("Go Sideward");
                     currentIndex += gateIndex;
                     isOnEvent = false;
+                    startingPos = transform.position;
+                    jumpDistance = Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position);
                 }
             }
         }
@@ -132,20 +134,20 @@ public class PlayerMovement : MonoBehaviour
             if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { currentIndex = 0; }
         }
 
+        //Moves pawn up and down
         currentPos = Mathf.PI * (Vector3.Distance(transform.position,startingPos)/ jumpDistance - 0.5f); //-PI/2 to PI/2
         
-        //Moves pawn up and down
         gameObject.transform.GetChild(0).transform.position = new Vector3(transform.position.x, transform.position.y + 0.6f + 5 * Mathf.Cos(currentPos), transform.position.z);
-
-        //Moves pawn towards next space
-        transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/, Time.deltaTime * speedMod);
-        //gameObject.transform.GetChild(0).LookAt(TrackLoopManager.instance.mainTrackTransforms[currentIndex].position);
         animator.SetBool("IsJumping", true);
 
         if (currentPos > 0.6)
         {
             animator.SetBool("IsJumping", false);
         }
+
+        //Moves pawn towards next space
+        transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/, Time.deltaTime * speedMod);
+
 
         yield return null;
     }
