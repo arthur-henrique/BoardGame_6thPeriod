@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
             if (canRoll && roll.WasPressedThisFrame())
             {
                 canRoll = false;
-                indexToGo = 3; //Random.Range(1, 7) + Random.Range(1, 7);
+                indexToGo = Random.Range(1, 7) + Random.Range(1, 7);
                 diceDisplay.text = indexToGo.ToString();
                 print(indexToGo);
                 isMoving = true;
