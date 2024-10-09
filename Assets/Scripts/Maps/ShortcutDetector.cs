@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShortcutDetector : MonoBehaviour
 {
     public bool isGate;
-    public int indexFactor;
+    public int shortcutIndex;
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -13,7 +13,7 @@ public class ShortcutDetector : MonoBehaviour
             if(isGate)
             {
                 other.gameObject.GetComponent<PlayerMovement>().isOnEvent = true;
-                other.gameObject.GetComponent<PlayerMovement>().gateIndex = indexFactor;
+                other.gameObject.GetComponent<PlayerMovement>().gateIndex = shortcutIndex;
             }
             else
             {

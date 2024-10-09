@@ -67,18 +67,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!GameManager.Instance.hasSetInitialPos)
-        //{
-        //    if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/) >= 0.05)
-        //    {
-        //        transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position, Time.deltaTime);
-                
-        //    }
-        //    else if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/) <= 0.05)
-        //    {
-        //        GameManager.Instance.hasSetInitialPos = true;
-        //    }
-        //}
+
         if (isOnTurn)
         {
             //Rolls dice
@@ -96,8 +85,6 @@ public class PlayerMovement : MonoBehaviour
                 //If player hasn't reached final space, move one space
                 if (indexToGo != 0)
                 {
-                    print(currentIndex);
-                    SetNextIndex();//PRECISO TIRAR ESSA LINHA DE DENTRO DO LOOP
                     StartCoroutine(MoveOneSpace());
                 }
 
@@ -125,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
                 else if (side.ReadValue<float>() != 0)
                 {
                     print("Go Sideward");
-                    currentIndex += gateIndex;
+                    currentIndex = gateIndex-1;
                     isOnEvent = false;
                 }
             }
@@ -134,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator MoveOneSpace()
     {
+        SetNextIndex();
 
         jumpDistance = Vector3.Distance(TrackLoopManager.instance.mainTrackTransforms[currentIndex].position, TrackLoopManager.instance.mainTrackTransforms[nextIndex].position);
 
@@ -145,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
             //Loops back
             //if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { currentIndex = 0; }
 
-            currentIndex++;
+            currentIndex = nextIndex;
         }
 
         diceDisplay.text = indexToGo.ToString();
@@ -166,22 +154,26 @@ public class PlayerMovement : MonoBehaviour
 
         yield return null;
     }
-
-    public void SetNextIndex(int i)
-    {
-        nextIndex = i;
-        if (nextIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { nextIndex = 0; }
-    }
     public void SetNextIndex()
     {
-        if (currentIndex == 29)
-            nextIndex = 13;
-        else if (currentIndex == 36)
-            nextIndex = 22;
-        else if (currentIndex == 26)
-            nextIndex = 0;
+
 
         nextIndex = currentIndex + 1;
         if (nextIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { nextIndex = 0; }
+
+        if (currentIndex == 30)
+        {
+            nextIndex = 13;
+        }
+
+        else if (currentIndex == 38)
+        {
+            nextIndex = 22;
+        }
+
+        else if (currentIndex == 26)
+        {
+            nextIndex = 0;
+        }
     }
 }
