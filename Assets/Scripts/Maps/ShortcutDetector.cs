@@ -8,7 +8,7 @@ public class ShortcutDetector : MonoBehaviour
     public int indexFactor;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             if(isGate)
             {
@@ -17,9 +17,9 @@ public class ShortcutDetector : MonoBehaviour
             }
             else
             {
-                other.gameObject.GetComponent<PlayerMovement>().currentIndex = indexFactor;
+                //other.gameObject.GetComponent<PlayerMovement>().SetNextIndex(indexFactor);
             }
-            
+
         }
     }
 }
