@@ -27,8 +27,6 @@ public class StartMinigame : MonoBehaviour
     private void Awake()
     {
         PlayerControl inputActions = new PlayerControl();
-        forward = inputActions.PlayerControllers.Forward;
-        side = inputActions.PlayerControllers.Sideward;
         roll = inputActions.PlayerControllers.Roll;
         minigameNameText.text = minigameName;
         minigameDescText.text = minigameDesc;
@@ -36,15 +34,11 @@ public class StartMinigame : MonoBehaviour
 
     private void OnEnable()
     {
-        forward.Enable();
-        side.Enable();
         roll.Enable();
     }
 
     private void OnDisable()
     {
-        forward.Disable();
-        side.Disable();
         roll.Disable();
     }
 

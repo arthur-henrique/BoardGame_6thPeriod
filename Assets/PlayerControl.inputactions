@@ -6,7 +6,7 @@
             "id": "95154a0c-2bf6-473e-974c-f09bcf2c7531",
             "actions": [
                 {
-                    "name": "Forward",
+                    "name": "ForwardP1",
                     "type": "Button",
                     "id": "dc111daf-675d-4165-8aae-0cf576409e2f",
                     "expectedControlType": "Button",
@@ -15,9 +15,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sideward",
+                    "name": "ForwardP2",
+                    "type": "Button",
+                    "id": "dae5c67f-a55f-4f9f-a6bf-5695078d9441",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SidewardP1",
                     "type": "Button",
                     "id": "979115d2-d57a-4ccd-9a87-e498b339bdca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SidewardP2",
+                    "type": "Button",
+                    "id": "d4af1c0e-9533-405a-95ca-ee160d165f86",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -41,7 +59,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Forward",
+                    "action": "ForwardP1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -52,7 +70,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sideward",
+                    "action": "SidewardP1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -63,7 +81,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Sideward",
+                    "action": "SidewardP1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -75,6 +93,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed67cf42-70ba-487d-a73b-a14e84fe8d64",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ForwardP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f4bd190-7f1e-4b1c-b435-a1415a4088b0",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SidewardP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae15964e-5336-4818-a7d0-94b04bf22119",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SidewardP2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

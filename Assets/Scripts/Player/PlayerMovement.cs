@@ -37,8 +37,19 @@ public class PlayerMovement : MonoBehaviour
     {
         //instance = this;
         PlayerControl inputActions = new();
-        forward = inputActions.PlayerControllers.Forward;
-        side = inputActions.PlayerControllers.Sideward;
+        if (gameObject.CompareTag("Player 1"))
+        {
+            forward = inputActions.PlayerControllers.ForwardP1;
+            side = inputActions.PlayerControllers.SidewardP1;
+            
+        }
+
+        if (gameObject.CompareTag("Player 2"))
+        {
+            forward = inputActions.PlayerControllers.ForwardP2;
+            side = inputActions.PlayerControllers.SidewardP2;
+
+        }
         roll = inputActions.PlayerControllers.Roll;
         animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
     }
@@ -93,8 +104,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     isMoving = false;
                     //Loops back
-                   // if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { currentIndex = 0; }
-                    //if (currentIndex == 0) { currentIndex = TrackLoopManager.instance.mainTrackTransforms.Count + 1; }
                     TrackLoopManager.instance.mainTrackTransforms[currentIndex].GetComponentInChildren<SpaceBehaviour>().DoTheThing();
                     //TrackLoopManager.instance.TurnTransition();
                 }
@@ -130,8 +139,6 @@ public class PlayerMovement : MonoBehaviour
         {
             startingPos = transform.position;
             indexToGo--;
-            //Loops back
-            //if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { currentIndex = 0; }
 
             currentIndex = nextIndex;
         }

@@ -31,8 +31,8 @@ public class MainMenuHandler : MonoBehaviour
     {
         instance = this;
         PlayerControl inputActions = new PlayerControl();
-        forward = inputActions.PlayerControllers.Forward;
-        side = inputActions.PlayerControllers.Sideward;
+        forward = inputActions.PlayerControllers.ForwardP1;
+        side = inputActions.PlayerControllers.SidewardP1;
         roll = inputActions.PlayerControllers.Roll;
     }
 

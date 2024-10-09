@@ -47,7 +47,7 @@ MonoBehaviour:
   m_AdditionalLightsShadowResolutionTierHigh: 1024
   m_ReflectionProbeBlending: 1
   m_ReflectionProbeBoxProjection: 1
-  m_ShadowDistance: 50
+  m_ShadowDistance: 200
   m_ShadowCascadeCount: 4
   m_Cascade2Split: 0.25
   m_Cascade3Split: {x: 0.1, y: 0.3}
@@ -106,6 +106,10 @@ MonoBehaviour:
   m_PrefilterDBufferMRT1: 1
   m_PrefilterDBufferMRT2: 1
   m_PrefilterDBufferMRT3: 0
+  m_PrefilterSoftShadowsQualityLow: 0
+  m_PrefilterSoftShadowsQualityMedium: 0
+  m_PrefilterSoftShadowsQualityHigh: 0
+  m_PrefilterSoftShadows: 0
   m_PrefilterScreenCoord: 1
   m_PrefilterNativeRenderPass: 1
   m_ShaderVariantLogLevel: 0

@@ -14,29 +14,23 @@ public class FinishMinigame : MonoBehaviour
     public float springStrength = 850*32;
     public float damping = 250;
 
-    public InputAction forward, side, roll;
+    public InputAction roll;
 
     private bool stopWorking = false;
 
     private void Awake()
     {
         PlayerControl inputActions = new PlayerControl();
-        forward = inputActions.PlayerControllers.Forward;
-        side = inputActions.PlayerControllers.Sideward;
         roll = inputActions.PlayerControllers.Roll;
     }
 
     private void OnEnable()
     {
-        forward.Enable();
-        side.Enable();
         roll.Enable();
     }
 
     private void OnDisable()
     {
-        forward.Disable();
-        side.Disable();
         roll.Disable();
     }
 

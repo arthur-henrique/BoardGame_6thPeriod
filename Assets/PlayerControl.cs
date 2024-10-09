@@ -28,7 +28,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             ""id"": ""95154a0c-2bf6-473e-974c-f09bcf2c7531"",
             ""actions"": [
                 {
-                    ""name"": ""Forward"",
+                    ""name"": ""ForwardP1"",
                     ""type"": ""Button"",
                     ""id"": ""dc111daf-675d-4165-8aae-0cf576409e2f"",
                     ""expectedControlType"": ""Button"",
@@ -37,9 +37,27 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Sideward"",
+                    ""name"": ""ForwardP2"",
+                    ""type"": ""Button"",
+                    ""id"": ""dae5c67f-a55f-4f9f-a6bf-5695078d9441"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SidewardP1"",
                     ""type"": ""Button"",
                     ""id"": ""979115d2-d57a-4ccd-9a87-e498b339bdca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SidewardP2"",
+                    ""type"": ""Button"",
+                    ""id"": ""d4af1c0e-9533-405a-95ca-ee160d165f86"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -63,7 +81,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Forward"",
+                    ""action"": ""ForwardP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -74,7 +92,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Sideward"",
+                    ""action"": ""SidewardP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -85,7 +103,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Sideward"",
+                    ""action"": ""SidewardP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -97,6 +115,39 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed67cf42-70ba-487d-a73b-a14e84fe8d64"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ForwardP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f4bd190-7f1e-4b1c-b435-a1415a4088b0"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SidewardP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae15964e-5336-4818-a7d0-94b04bf22119"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SidewardP2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -287,8 +338,10 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
 }");
         // PlayerControllers
         m_PlayerControllers = asset.FindActionMap("PlayerControllers", throwIfNotFound: true);
-        m_PlayerControllers_Forward = m_PlayerControllers.FindAction("Forward", throwIfNotFound: true);
-        m_PlayerControllers_Sideward = m_PlayerControllers.FindAction("Sideward", throwIfNotFound: true);
+        m_PlayerControllers_ForwardP1 = m_PlayerControllers.FindAction("ForwardP1", throwIfNotFound: true);
+        m_PlayerControllers_ForwardP2 = m_PlayerControllers.FindAction("ForwardP2", throwIfNotFound: true);
+        m_PlayerControllers_SidewardP1 = m_PlayerControllers.FindAction("SidewardP1", throwIfNotFound: true);
+        m_PlayerControllers_SidewardP2 = m_PlayerControllers.FindAction("SidewardP2", throwIfNotFound: true);
         m_PlayerControllers_Roll = m_PlayerControllers.FindAction("Roll", throwIfNotFound: true);
         // Controls_Fruit_Drop
         m_Controls_Fruit_Drop = asset.FindActionMap("Controls_Fruit_Drop", throwIfNotFound: true);
@@ -361,15 +414,19 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     // PlayerControllers
     private readonly InputActionMap m_PlayerControllers;
     private List<IPlayerControllersActions> m_PlayerControllersActionsCallbackInterfaces = new List<IPlayerControllersActions>();
-    private readonly InputAction m_PlayerControllers_Forward;
-    private readonly InputAction m_PlayerControllers_Sideward;
+    private readonly InputAction m_PlayerControllers_ForwardP1;
+    private readonly InputAction m_PlayerControllers_ForwardP2;
+    private readonly InputAction m_PlayerControllers_SidewardP1;
+    private readonly InputAction m_PlayerControllers_SidewardP2;
     private readonly InputAction m_PlayerControllers_Roll;
     public struct PlayerControllersActions
     {
         private @PlayerControl m_Wrapper;
         public PlayerControllersActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Forward => m_Wrapper.m_PlayerControllers_Forward;
-        public InputAction @Sideward => m_Wrapper.m_PlayerControllers_Sideward;
+        public InputAction @ForwardP1 => m_Wrapper.m_PlayerControllers_ForwardP1;
+        public InputAction @ForwardP2 => m_Wrapper.m_PlayerControllers_ForwardP2;
+        public InputAction @SidewardP1 => m_Wrapper.m_PlayerControllers_SidewardP1;
+        public InputAction @SidewardP2 => m_Wrapper.m_PlayerControllers_SidewardP2;
         public InputAction @Roll => m_Wrapper.m_PlayerControllers_Roll;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControllers; }
         public void Enable() { Get().Enable(); }
@@ -380,12 +437,18 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerControllersActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerControllersActionsCallbackInterfaces.Add(instance);
-            @Forward.started += instance.OnForward;
-            @Forward.performed += instance.OnForward;
-            @Forward.canceled += instance.OnForward;
-            @Sideward.started += instance.OnSideward;
-            @Sideward.performed += instance.OnSideward;
-            @Sideward.canceled += instance.OnSideward;
+            @ForwardP1.started += instance.OnForwardP1;
+            @ForwardP1.performed += instance.OnForwardP1;
+            @ForwardP1.canceled += instance.OnForwardP1;
+            @ForwardP2.started += instance.OnForwardP2;
+            @ForwardP2.performed += instance.OnForwardP2;
+            @ForwardP2.canceled += instance.OnForwardP2;
+            @SidewardP1.started += instance.OnSidewardP1;
+            @SidewardP1.performed += instance.OnSidewardP1;
+            @SidewardP1.canceled += instance.OnSidewardP1;
+            @SidewardP2.started += instance.OnSidewardP2;
+            @SidewardP2.performed += instance.OnSidewardP2;
+            @SidewardP2.canceled += instance.OnSidewardP2;
             @Roll.started += instance.OnRoll;
             @Roll.performed += instance.OnRoll;
             @Roll.canceled += instance.OnRoll;
@@ -393,12 +456,18 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IPlayerControllersActions instance)
         {
-            @Forward.started -= instance.OnForward;
-            @Forward.performed -= instance.OnForward;
-            @Forward.canceled -= instance.OnForward;
-            @Sideward.started -= instance.OnSideward;
-            @Sideward.performed -= instance.OnSideward;
-            @Sideward.canceled -= instance.OnSideward;
+            @ForwardP1.started -= instance.OnForwardP1;
+            @ForwardP1.performed -= instance.OnForwardP1;
+            @ForwardP1.canceled -= instance.OnForwardP1;
+            @ForwardP2.started -= instance.OnForwardP2;
+            @ForwardP2.performed -= instance.OnForwardP2;
+            @ForwardP2.canceled -= instance.OnForwardP2;
+            @SidewardP1.started -= instance.OnSidewardP1;
+            @SidewardP1.performed -= instance.OnSidewardP1;
+            @SidewardP1.canceled -= instance.OnSidewardP1;
+            @SidewardP2.started -= instance.OnSidewardP2;
+            @SidewardP2.performed -= instance.OnSidewardP2;
+            @SidewardP2.canceled -= instance.OnSidewardP2;
             @Roll.started -= instance.OnRoll;
             @Roll.performed -= instance.OnRoll;
             @Roll.canceled -= instance.OnRoll;
@@ -545,8 +614,10 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     public Controls_Off_the_HookActions @Controls_Off_the_Hook => new Controls_Off_the_HookActions(this);
     public interface IPlayerControllersActions
     {
-        void OnForward(InputAction.CallbackContext context);
-        void OnSideward(InputAction.CallbackContext context);
+        void OnForwardP1(InputAction.CallbackContext context);
+        void OnForwardP2(InputAction.CallbackContext context);
+        void OnSidewardP1(InputAction.CallbackContext context);
+        void OnSidewardP2(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
     }
     public interface IControls_Fruit_DropActions
