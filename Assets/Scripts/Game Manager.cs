@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     private Material materialFaceOne;
     private Material materialFaceTwo;
 
-
+    public bool hasSetInitialPos = false;
 
     private void Awake()
     {

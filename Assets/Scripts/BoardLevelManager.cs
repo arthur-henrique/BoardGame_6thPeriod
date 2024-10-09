@@ -34,13 +34,13 @@ public class BoardLevelManager : MonoBehaviour
         if(GameManager.Instance != null && GameManager.Instance.needsToUpdateBoardLevel)
         {
             GetIndexFromManager();
-            TrackLoopManager.instance.UpdatePositionByforce();
 
             if(GameManager.Instance.needsToUpdateTurn)
             {
                 GameManager.Instance.needsToUpdateTurn = false;
                 TrackLoopManager.instance.TurnTransition();
             }
+            TrackLoopManager.instance.UpdatePositionByforce();
         }
 
         for (int i = 0; i < cinemachineVirtualCameras.Length; i++)
@@ -65,7 +65,7 @@ public class BoardLevelManager : MonoBehaviour
     {
         for (int i = 0; i < GameManager.Instance.playersIndexi.Count; i++)
         {
-            TrackLoopManager.instance.playersList[i].GetComponent<PlayerMovement>().currentIndex = GameManager.Instance.playersIndexi[i] - 1;
+            TrackLoopManager.instance.playersList[i].GetComponent<PlayerMovement>().currentIndex = GameManager.Instance.playersIndexi[i];
         }
     }
 

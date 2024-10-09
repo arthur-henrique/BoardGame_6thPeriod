@@ -6,7 +6,7 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static PlayerMovement instance;
+    //public static PlayerMovement instance;
     public InputAction forward, side, roll;
 
     public int currentIndex = 0;
@@ -30,10 +30,12 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
 
     public TextMeshPro diceDisplay;
+    private bool canMove = false;
+    
 
     private void Awake()
     {
-        instance = this;
+        //instance = this;
         PlayerControl inputActions = new();
         forward = inputActions.PlayerControllers.Forward;
         side = inputActions.PlayerControllers.Sideward;
@@ -57,17 +59,33 @@ public class PlayerMovement : MonoBehaviour
         side.Disable();
         roll.Disable();
     }
+    private void Start()
+    {
+        startingPos = transform.position;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        //if (!GameManager.Instance.hasSetInitialPos)
+        //{
+        //    if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/) >= 0.05)
+        //    {
+        //        transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position, Time.deltaTime);
+                
+        //    }
+        //    else if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/) <= 0.05)
+        //    {
+        //        GameManager.Instance.hasSetInitialPos = true;
+        //    }
+        //}
         if (isOnTurn)
         {
             //Rolls dice
             if (canRoll && roll.WasPressedThisFrame())
             {
                 canRoll = false;
-                indexToGo = Random.Range(1, 7) + Random.Range(1, 7);
+                indexToGo = 3; //Random.Range(1, 7) + Random.Range(1, 7);
                 diceDisplay.text = indexToGo.ToString();
                 print(indexToGo);
                 isMoving = true;
@@ -88,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
                     //Loops back
                     if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { currentIndex = 0; }
                     if (currentIndex == 0) { currentIndex = TrackLoopManager.instance.mainTrackTransforms.Count + 1; }
-                    TrackLoopManager.instance.mainTrackTransforms[currentIndex-1].GetComponentInChildren<SpaceBehaviour>().DoTheThing();
+                    TrackLoopManager.instance.mainTrackTransforms[currentIndex].GetComponentInChildren<SpaceBehaviour>().DoTheThing();
                     //TrackLoopManager.instance.TurnTransition();
                 }
 
@@ -114,31 +132,31 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator MoveOneSpace()
     {
-        //private float variance_x = Random.Range(0, 1.0f);
-        //private float variance_z = Random.Range(0, 1.0f);
-        //Vector3 variance = new(variance_x, 0f, variance_z);
+
+        jumpDistance = Vector3.Distance(TrackLoopManager.instance.mainTrackTransforms[currentIndex].position, TrackLoopManager.instance.mainTrackTransforms[currentIndex + 1].position);
 
         //if player has arrived at the next space, set the next space to go
-        if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/) <= 0.1)
+        if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex + 1].position) <= 0.1)
         {
+            print("Cheguei no espaço");
             startingPos = transform.position;
+            
             currentIndex++;
-            jumpDistance = Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/);
             indexToGo--;
-            diceDisplay.text = indexToGo.ToString();
-            if (indexToGo == 0) { diceDisplay.text = ""; }
-
             //Loops back
             if (currentIndex >= TrackLoopManager.instance.mainTrackTransforms.Count) { currentIndex = 0; }
-        }
 
-        currentPos = Mathf.PI * (Vector3.Distance(transform.position,startingPos)/ jumpDistance - 0.5f); //-PI/2 to PI/2
-        
+        }
+        diceDisplay.text = indexToGo.ToString();
+        if (indexToGo == 0) { diceDisplay.text = ""; }
+
+        currentPos = Mathf.PI * (Vector3.Distance(transform.position, startingPos) / jumpDistance - 0.5f); //-PI/2 to PI/2
+
         //Moves pawn up and down
         gameObject.transform.GetChild(0).transform.position = new Vector3(transform.position.x, transform.position.y + 0.6f + 5 * Mathf.Cos(currentPos), transform.position.z);
 
         //Moves pawn towards next space
-        transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex].position /*+ variance*/, Time.deltaTime * speedMod);
+        transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[currentIndex + 1].position, Time.deltaTime * speedMod);
         //gameObject.transform.GetChild(0).LookAt(TrackLoopManager.instance.mainTrackTransforms[currentIndex].position);
         animator.SetBool("IsJumping", true);
 

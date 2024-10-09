@@ -35,6 +35,7 @@ public class TrackLoopManager : MonoBehaviour
         {
             if (i != GameManager.Instance.currentPlayerIndexTurn)
                 playersList[i].gameObject.GetComponent<PlayerMovement>().enabled = false;
+
         }
     }
 
@@ -55,19 +56,26 @@ public class TrackLoopManager : MonoBehaviour
             {
                 playersList[i].gameObject.GetComponent<PlayerMovement>().enabled = false;
                 virtualCameras[i].Priority = 0;
+                print(i);
             }
         }
 
         playersList[GameManager.Instance.currentPlayerIndexTurn].gameObject.GetComponent<PlayerMovement>().enabled = true;
+        //if(playersList[GameManager.Instance.currentPlayerIndexTurn].GetComponent<PlayerMovement>().currentIndex < 0)
+        //{
+        //    playersList[GameManager.Instance.currentPlayerIndexTurn].GetComponent<PlayerMovement>().currentIndex = 0;
+
+        //}
         virtualCameras[GameManager.Instance.currentPlayerIndexTurn].Priority = 1;
     }
 
     public void UpdatePositionByforce()
     {
-        for (int i = 0;i < playersList.Count;i++)
+        for (int i = 0; i < playersList.Count; i++)
         {
             playersList[i].transform.position = mainTrackTransforms[playersList[i].GetComponent<PlayerMovement>().currentIndex].position;
             playersList[i].GetComponent<PlayerMovement>().currentLap = GameManager.Instance.playerLaps[i];
+            print(i);
         }
     }
 
@@ -76,6 +84,7 @@ public class TrackLoopManager : MonoBehaviour
         for (int i = 0; i < playersList.Count; i++)
         {
              GameManager.Instance.playerLaps[i] = playersList[i].GetComponent<PlayerMovement>().currentLap;
+            print(i);
         }
     }
 
