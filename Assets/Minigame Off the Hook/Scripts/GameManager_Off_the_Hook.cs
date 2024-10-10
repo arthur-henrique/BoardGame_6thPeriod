@@ -41,11 +41,11 @@ public class GameManager_Off_the_Hook : MonoBehaviour
 
     IEnumerator FishCountdown()
     {
-        StartCoroutine(moveCamera(totalTime)); //starts moving camera towards fish
+        StartCoroutine(MoveCamera(totalTime)); //starts moving camera towards fish
         yield return new WaitForSeconds(totalTime); 
 
         alert.SetActive(true); //Sends fish alert
-        StartCoroutine(moveCameraBack()); //Quickly moves camera back
+        StartCoroutine(MoveCameraBack()); //Quickly moves camera back
         fishBite = true; //Enables player input
 
         while (fishBite) { yield return null; } //waits for player input
@@ -96,9 +96,9 @@ public class GameManager_Off_the_Hook : MonoBehaviour
     }
 
     //Moves camera towards fish
-    IEnumerator moveCamera(float totalTime)
+    IEnumerator MoveCamera(float totalTime)
     {
-        Vector3 newPos = new Vector3(cameraFish.transform.position.x, cameraFish.transform.position.y, cameraFish.transform.position.z + totalTime );
+        Vector3 newPos = new(cameraFish.transform.position.x, cameraFish.transform.position.y, cameraFish.transform.position.z + totalTime );
 
         while (cameraFish.transform.position != newPos)
         {
@@ -108,7 +108,7 @@ public class GameManager_Off_the_Hook : MonoBehaviour
     }
 
     //Returns camera to original position
-    IEnumerator moveCameraBack()
+    IEnumerator MoveCameraBack()
     {
         while (cameraFish.transform.position != ogCameraPos)
         {

@@ -102,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
                 //When the player reaches their final space
                 else
                 {
+                    animator.SetBool("IsJumping", false);
                     isMoving = false;
                     //Loops back
                     TrackLoopManager.instance.mainTrackTransforms[currentIndex].GetComponentInChildren<SpaceBehaviour>().DoTheThing();
@@ -137,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         //if player has arrived at the next space, set the next space to go
         if (Vector3.Distance(transform.position, TrackLoopManager.instance.mainTrackTransforms[nextIndex].position) <= 0.1)
         {
+            animator.Play("Armature|JumpStart",-1,0f);
             startingPos = transform.position;
             indexToGo--;
 
@@ -152,12 +154,10 @@ public class PlayerMovement : MonoBehaviour
 
         //Moves pawn towards next space
         transform.position = Vector3.MoveTowards(transform.position, TrackLoopManager.instance.mainTrackTransforms[nextIndex].position, Time.deltaTime * speedMod);
-        
-        //gameObject.transform.GetChild(0).LookAt(TrackLoopManager.instance.mainTrackTransforms[currentIndex].position);
+        var targetRotation = Quaternion.LookRotation(-TrackLoopManager.instance.mainTrackTransforms[nextIndex].position, Vector3.up);
+        transform.GetChild(0).rotation = targetRotation;
 
         animator.SetBool("IsJumping", true);
-
-        if (currentPos > 0.6) { animator.SetBool("IsJumping", false); }
 
         yield return null;
     }

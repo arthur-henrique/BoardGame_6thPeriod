@@ -252,6 +252,15 @@ MonoBehaviour:
   mainImage: {fileID: 5906176930013912834}
   springStrength: 27200
   damping: 250
+  roll:
+    m_Name: Roll
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6979e4a3-1902-4cd0-836c-b8f1d34e5a38
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &6390008902862717749
 GameObject:
   m_ObjectHideFlags: 0

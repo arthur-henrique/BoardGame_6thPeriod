@@ -95,7 +95,7 @@ public class SpaceBehaviour : MonoBehaviour
 
     private void StartMinigame()
     {
-        int randonMinigame = Random.Range(2, 4);
+        int randonMinigame = Random.Range(2, 5);
         StartCoroutine(MinigameTimerCountdown(randonMinigame));
     }
 
