@@ -17,8 +17,10 @@ public class GameManager : MonoBehaviour
     public bool needsToUpdateBoardLevel = false;
     public bool needsToUpdateTurn = false;
     public int currentPlayerIndexTurn;
+    public int winner = 0;
 
-
+    [SerializeField]
+    private GameObject finishGameCanvas;
 
     [Header("Player Customizations")]
 
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour
 
     public bool hasSetInitialPos = false;
 
+    Scene currentScene;
+    string sceneName;
     private void Awake()
     {
         if (Instance == null)
@@ -53,7 +57,30 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
     }
-    
+
+    private void OnEnable()
+    {
+        
+        
+    }
+    private void Update()
+    {
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+        if (sceneName == "GameplayLevel")
+        {
+            for (int i = 0; i < playersScore.Count; i++)
+            {
+                if (playersScore[i] >= 3)
+                {
+                    print(playersScore[i]);
+                    playersScore[i] = 0;
+                    winner = i;
+                    EndGame();
+                }
+            }
+        }
+    }
     //public void SetPlayersInitialPosition(Vector3 playerOnePos, Vector3 playerTwoPos)
     //{
     //    players[0].transform.position = new Vector3(playerOnePos.x, playerOnePos.y + 1, playerOnePos.z);
@@ -84,17 +111,9 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        Instantiate(finishGameCanvas);
         Time.timeScale = 0.0f;
     }
 
-    private void Update()
-    {
-        for (int i = 0; i < playerLaps.Count; i++)
-        {
-            if (playerLaps[i] >=5)
-            {
-                EndGame();
-            }
-        }
-    }
+
 }
