@@ -2205,8 +2205,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8508776867109063695, guid: 45fb93a2080a1824880eb42a6dc93f1c, type: 3}
       propertyPath: minigameDesc
-      value: "Get to the Finish Line first to win! \nJump between platforms and avoid
-        the spike balls.\n\nUse                      to move and                     
+      value: "Get to the Finish Line first to win! \nIf you fall or hit a spike,
+        you'll respawn!\n\nUse                      to move and                     
         to jump."
       objectReference: {fileID: 0}
     - target: {fileID: 8508776867109063695, guid: 45fb93a2080a1824880eb42a6dc93f1c, type: 3}

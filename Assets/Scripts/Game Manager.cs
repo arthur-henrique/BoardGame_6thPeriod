@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -58,20 +57,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        
-        
-    }
     private void Update()
     {
+        //Checks if its in the main game, then checks if the game was won
         currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
         if (sceneName == "GameplayLevel")
         {
             for (int i = 0; i < playersScore.Count; i++)
             {
-                if (playersScore[i] >= 3)
+                if (playersScore[i] >= 50)
                 {
                     print(playersScore[i]);
                     playersScore[i] = 0;
@@ -81,11 +76,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    //public void SetPlayersInitialPosition(Vector3 playerOnePos, Vector3 playerTwoPos)
-    //{
-    //    players[0].transform.position = new Vector3(playerOnePos.x, playerOnePos.y + 1, playerOnePos.z);
-    //    players[1].transform.position = new Vector3(playerTwoPos.x, playerTwoPos.y + 1, playerTwoPos.z);
-    //}
 
     public void ChangeLevels(int levelIndex)
     {
@@ -114,6 +104,4 @@ public class GameManager : MonoBehaviour
         Instantiate(finishGameCanvas);
         Time.timeScale = 0.0f;
     }
-
-
 }

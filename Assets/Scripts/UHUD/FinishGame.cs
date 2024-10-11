@@ -4,7 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
- 
+
+
 public class FinishGame : MonoBehaviour
 {
     [SerializeField]
@@ -14,7 +15,7 @@ public class FinishGame : MonoBehaviour
     private TextMeshProUGUI winnerText;
 
     [SerializeField]
-    private Image winnerImage;
+    private RawImage winnerImage;
     [SerializeField]
     private Material player1Mat;
     [SerializeField]
@@ -50,8 +51,8 @@ public class FinishGame : MonoBehaviour
         GameObject gm = GameObject.Find("GameManager");
         winnerText.text = string.Format(gm.GetComponent<GameManager>().playerNames[gm.GetComponent<GameManager>().winner]+" wins!");
         if (gm.GetComponent<GameManager>().winner == 0)
-            winnerImage.material = player1Mat;
-        else winnerImage.material = player2Mat;
+            winnerImage.texture = player1Mat.mainTexture;
+        else winnerImage.material.mainTexture = player2Mat.mainTexture;
 
     }
 
