@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool needsToUpdateTurn = false;
     public int currentPlayerIndexTurn;
     public int winner = 0;
+    private bool isGameWon = false;
 
     [SerializeField]
     private GameObject finishGameCanvas;
@@ -66,10 +67,10 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < playersScore.Count; i++)
             {
-                if (playersScore[i] >= 50)
+                if (playersScore[i] >= 50 && !isGameWon)
                 {
                     print(playersScore[i]);
-                    playersScore[i] = 0;
+                    isGameWon = true;
                     winner = i;
                     EndGame();
                 }
